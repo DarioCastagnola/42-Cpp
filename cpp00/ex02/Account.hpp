@@ -7,11 +7,6 @@
 //                                                                            //
 // ************************************************************************** //
 
-#include <iostream>
-#include <cstring>
-#include <iomanip>
-#include <string>
-#include <stdlib.h>
 #pragma once
 #ifndef __ACCOUNT_H__
 #define __ACCOUNT_H__

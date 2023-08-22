@@ -6,32 +6,42 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 11:45:53 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/08/22 11:52:41 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/08/22 16:43:24 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
+#include <iostream>
+#include <cstring>
+#include <iomanip>
+#include <string>
+#include <stdlib.h>
 
-static int	Account::getNbAccounts( void )
+int	Account::getNbAccounts( void )
 {
-    return this->_nbAccounts;
+    return Account::_nbAccounts;
 }
 
-static int	Account::getTotalAmount( void )
+int	Account::getTotalAmount( void )
 {
-    return this->_totalAmount;
+    return Account::_totalAmount;
 }
 
-static int	Account::getNbDeposits( void )
+int	Account::getNbDeposits( void )
 {
-
+    return Account::_totalNbDeposits;
 }
 
-static int	Account::getNbWithdrawals( void )
+int	Account::getNbWithdrawals( void )
+{
+    return Account::_totalNbWithdrawals;
+}
+void	Account::displayAccountsInfos( void )
 {
     
 }
-static void	Account::displayAccountsInfos( void )
+
+void	Account::_displayTimestamp( void )
 {
     
 }
