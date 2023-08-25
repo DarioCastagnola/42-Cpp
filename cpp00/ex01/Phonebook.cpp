@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 11:45:28 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/08/22 11:23:17 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:51:48 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void    PhoneBook::search()
     std::cout << "Which entry are you most interested in?" << std::endl;
     std::getline(std::cin, query);
     i = std::atoi(query.c_str());
-    if (i < 1 || this->user[i - 1].getFname() == "" || i > 8)
+    if (i < 1 || i > 8 || this->user[i - 1].getFname() == "")
     {
         std::cout << "Invalid Search query" << std::endl;
         return ;
