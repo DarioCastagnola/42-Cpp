@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 11:30:10 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/08/31 16:46:18 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/01 10:41:38 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,3 @@ int main(int argc, char **argv)
     replacer(argv[1], argv[2], argv[3]);
     return 0;
 }
-
-
-// 	else 
-//     {
-// 		char ch;
-//         rfile.open (newfile.c_str());
-
-// 		while (1) 
-//         {
-// 			myfile >> ch;
-// 			if (myfile.eof())
-// 				break;
-
-// 			rfile << ch;
-// 		}
-//         rfile << std::endl;
-// 	}
-//     rfile.close();
-//     myfile.close();
-//     return ;
-// }
