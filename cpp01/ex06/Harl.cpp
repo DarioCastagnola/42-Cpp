@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/01 10:52:13 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/04 11:37:41 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/09/04 11:22:29 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/09/04 13:32:00 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,32 @@
 
 void Harl::debug(void)
 {
+    std::cout << "[ DEBUG ]" << std::endl;
     std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-specialketchup burger. I really do!" << std::endl;
+    std::cout << std::endl;
 }
 
 void Harl::info(void)
 {
+    std::cout << "[ INFO ]" << std::endl;
     std::cout << "I cannot believe adding extra bacon costs more money."
     << "You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!" << std::endl;
+    std::cout << std::endl;
 }   
 
 void Harl::warning(void)
 {
+    std::cout << "[ WARNING ]" << std::endl;
     std::cout << "I think I deserve to have some extra bacon for free. I've been coming for\
  years whereas you started working here since last month." << std::endl;
+    std::cout << std::endl;
 }
 
 void Harl::error(void)
 {
+    std::cout << "[ ERROR ]" << std::endl;
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
+    std::cout << std::endl;
 }
 
 void Harl::complain(std::string level)
@@ -51,8 +59,34 @@ void Harl::complain(std::string level)
                                               // 0 1 2 3
 }
 
-    
-// void	Harl::complain(std::string level){
-//     void	(Harl::*p[4])() = {&Harl::warning, &Harl::debug, &Harl::error, &Harl::info};
-//     (this->*p[level[0] % 10 % 7])();
-// }   Se vuoi flexare usi questa funzione. Clean code am I right?
+void Harl::filter(std::string level)
+{
+    std::string list[] = {"WARNING", "DEBUG", "ERROR", "INFO"};
+    int i = -1;
+    while (++i <= 3)
+        if (list[i] == level)
+            break;
+    switch (i) 
+    {
+    case 0:
+        complain(level);
+        complain("ERROR");
+        break;
+    case 1:
+        complain(level);
+        complain("INFO");
+        complain("WARNING");
+        complain("ERROR");
+        break;
+    case 2:
+        complain(level);
+        break;
+    case 3:
+        complain(level);
+        complain("WARNING");
+        complain("ERROR");
+        break;
+    case 4:
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;;
+    }   
+}
