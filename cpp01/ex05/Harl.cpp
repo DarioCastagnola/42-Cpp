@@ -6,13 +6,11 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/01 10:52:13 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/04 10:50:49 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/04 11:12:50 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
-
-typedef void	(Harl::*fp) (void);
 
 void Harl::debug(void)
 {
@@ -21,38 +19,40 @@ void Harl::debug(void)
 
 void Harl::info(void)
 {
-    std::cout << "info" << std::endl;
-}
+    std::cout << "I cannot believe adding extra bacon costs more money."
+    << "You didn't put enough bacon in my burger! If you did, I wouldn't be asking for more!" << std::endl;
+}   
 
 void Harl::warning(void)
 {
-    std::cout << "warning" << std::endl;
+    std::cout << "I think I deserve to have some extra bacon for free. I've been coming for\
+ years whereas you started working here since last month." << std::endl;
 }
 
 void Harl::error(void)
 {
-    std::cout << "error" << std::endl;
+    std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
 void Harl::complain(std::string level)
 {
-    int	id;
-
 	if (level != "DEBUG" && level != "INFO" && level != "WARNING" && level != "ERROR")
 	{
 		std::cout << "Command not found" << std::endl;
 		return ;
 	}
-    fp  function[4];
-    function[0] = &Harl::warning;
-    function[1] = &Harl::debug;
-    function[2] = &Harl::error;
-    function[3] = &Harl::info;
-    id = level[0] % 10 % 7;   //magic numbers go brrrrrr (in all seriousness; 
-                              //This line takes the ascii value of the first letter(68, 87, 73, 69)
-                              //and this calculation makes it so that id corresponds to the right function)
-                              // W D E I % 10
-                              // 7 8 9 3 % 7
-                              // 0 1 2 3
-    return (this->*function[id])();
+	void	(Harl::*p[4])() = {&Harl::warning, &Harl::debug, &Harl::error, &Harl::info};
+
+	return  (this->*p[level[0] % 10 % 7])();  //magic numbers go brrrrrr (in all seriousness; 
+                                              //This line takes the ascii value of the first letter(68, 87, 73, 69)
+                                              //and this calculation makes it so that the index corresponds to the right function)
+                                              // W D E I % 10
+                                              // 7 8 9 3 % 7
+                                              // 0 1 2 3
 }
+
+    
+// void	Harl::complain(std::string level){
+//     void	(Harl::*p[4])() = {&Harl::warning, &Harl::debug, &Harl::error, &Harl::info};
+//     (this->*p[level[0] % 10 % 7])();
+// }   Se vuoi flexare usi questa funzione. Clean code am I right?
