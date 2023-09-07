@@ -6,13 +6,13 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:14:34 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/05 13:56:48 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:06:56 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-const int _fbits = 8;
+const int Fixed::_fbits = 8;
 
 Fixed::Fixed(void)
 {
