@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:14:34 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/11 16:36:47 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/12 11:40:18 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ Fixed    Fixed::operator-(Fixed const &f)
 Fixed    Fixed::operator*(Fixed const &f)
 {
     Fixed sum;
-    sum.setRawBits((int) ((long) this->getRawBits()) * ((long) f.getRawBits() >> Fixed::_fbits));    
+    sum.setRawBits((int) ((long) this->getRawBits()) * (long) f.getRawBits() >> Fixed::_fbits);    
     return sum;
 }
 
@@ -174,4 +174,32 @@ Fixed &Fixed::operator--(void)
 {
     --this->_value;
     return *this;
+}
+
+Fixed &Fixed::min(Fixed &a, Fixed&b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return a;
+    return b; 
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed&b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return b;
+    return a; 
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return a;
+    return b; 
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return b;
+    return a; 
 }
