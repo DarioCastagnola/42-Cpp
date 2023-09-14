@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:14:34 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/12 11:40:18 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/14 12:40:57 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,70 +80,70 @@ void    Fixed::setRawBits(int const raw)
     this->_value = raw;
 }
 
-bool    Fixed::operator<(Fixed const &f)
+bool    Fixed::operator<(Fixed const &f) const
 {
     if (this->getRawBits() < f.getRawBits())
         return true;
     return false;
 }
 
-bool    Fixed::operator>(Fixed const &f)
+bool    Fixed::operator>(Fixed const &f) const
 {
     if (this->getRawBits() > f.getRawBits())
         return true;
     return false;
 }
 
-bool    Fixed::operator>=(Fixed const &f)
+bool    Fixed::operator>=(Fixed const &f) const
 {
     if (this->getRawBits() >= f.getRawBits())
         return true;
     return false;
 }
 
-bool    Fixed::operator<=(Fixed const &f)
+bool    Fixed::operator<=(Fixed const &f) const
 {
     if (this->getRawBits() <= f.getRawBits())
         return true;
     return false;
 }
 
-bool    Fixed::operator==(Fixed const &f)
+bool    Fixed::operator==(Fixed const &f) const
 {
     if (this->getRawBits() == f.getRawBits())
         return true;
     return false;
 }
 
-bool    Fixed::operator!=(Fixed const &f)
+bool    Fixed::operator!=(Fixed const &f) const
 {
     if (this->getRawBits() != f.getRawBits())
         return true;
     return false;
 }
 
-Fixed    Fixed::operator+(Fixed const &f)
+Fixed    Fixed::operator+(Fixed const &f) const
 {
     Fixed sum;
-    sum = this->getRawBits() + f.getRawBits();
+    sum.setRawBits(this->getRawBits() + f.getRawBits());
     return sum;
 }
 
-Fixed    Fixed::operator-(Fixed const &f)
+Fixed    Fixed::operator-(Fixed const &f) const
 {
     Fixed sum;
-    sum = this->getRawBits() - f.getRawBits();
+    sum.setRawBits(this->getRawBits() - f.getRawBits());
     return sum;
 }
 
-Fixed    Fixed::operator*(Fixed const &f)
+Fixed    Fixed::operator*(Fixed const &f) const
 {
     Fixed sum;
     sum.setRawBits((int) ((long) this->getRawBits()) * (long) f.getRawBits() >> Fixed::_fbits);    
     return sum;
 }
 
-Fixed    Fixed::operator/(Fixed const &f)
+Fixed    Fixed::operator/(Fixed const &f) const
 {
     Fixed sum;
     sum.setRawBits((int) ((long) this->getRawBits() << Fixed::_fbits) / (long) f.getRawBits());    
