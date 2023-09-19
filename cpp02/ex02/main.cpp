@@ -6,36 +6,62 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:01:11 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/14 12:36:48 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/15 12:35:52 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) 
+int main( void )
 {
-    Fixed a;
-    Fixed const b(Fixed(4) / Fixed(0.3f));
-    Fixed const c(Fixed(5.05f) * Fixed(2));
-    Fixed const d(0.3f);
-    Fixed const e(-0.5f);
+	Fixed	a(4);
+	Fixed	b(5.05f);
+	Fixed	c(b);
+	bool	cond;
 
-    std::cout << "divided = " << (d / e) << std::endl;
-    std::cout << "product = " << (d * e) << std::endl;
-    std::cout << "sum = " << (d + e) << std::endl;
-    std::cout << "neg = " << (d - e) << std::endl;
-    std::cout << "a = "  << a << std::endl;
-    std::cout << "++a = "  << ++a << std::endl;
-    std::cout << "a = "  << a << std::endl;
-    std::cout << "a++ = " << a++ << std::endl;
-    std::cout << "a = "  << a << std::endl;
-    std::cout << "b = "  << b << std::endl;
-    std::cout << "--a = "  << --a << std::endl;
-    std::cout << "a = "  << a << std::endl;
-    std::cout << "a-- = "  << a-- << std::endl;
-    std::cout << "a = "  << a << std::endl;
-    std::cout << "c = " << c << std::endl;
-    std::cout << "max a, b = " << Fixed::max(a, b) << std::endl;
-    std::cout << "min a, c = " << Fixed::min(a, c) << std::endl;
-    return 0;
+	std::cout << "a = " << a << std::endl;
+	std::cout << "b = " << b << std::endl;
+	std::cout << "c = " << c << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << a << " + " << b << " = " << a + b << std::endl;
+	std::cout << a << " - " << b << " = " << a - b << std::endl;
+	std::cout << a << " * " << b << " = " << a * b << std::endl;
+	std::cout << b << " / " << a << " = " << b / a << std::endl;
+
+	std::cout << std::endl;
+
+	cond = c < b;
+	std::cout << c << " < " << b << " = " << cond << std::endl;
+	cond = c > b;
+	std::cout << c << " > " << b << " = " << cond << std::endl;
+	cond = a < b;
+	std::cout << a << " < " << b << " = " << cond << std::endl;
+	cond = c > a;
+	std::cout << c << " > " << a << " = " << cond << std::endl;
+	cond = c <= b;
+	std::cout << c << " <= " << b << " = " << cond << std::endl;
+	cond = c >= b;
+	std::cout << c << " >= " << b << " = " << cond << std::endl;
+	cond = c == b;
+	std::cout << c << " == " << b << " = " << cond << std::endl;
+	cond = c == a;
+	std::cout << c << " == " << a << " = " << cond << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << a++ << " a++ " << a << std::endl;
+	std::cout << b++ << " b++ " << b << std::endl;
+	std::cout << a-- << " a-- " << a << std::endl;
+	std::cout << b-- << " b-- " << b << std::endl;
+
+	std::cout << std::endl;
+
+	std::cout << ++a << " ++a " << a << std::endl;
+	std::cout << ++b << " ++b " << b << std::endl;
+	std::cout << --a << " --a " << a << std::endl;
+	std::cout << --b << " --b " << b << std::endl;
+
+	return 0;
 }

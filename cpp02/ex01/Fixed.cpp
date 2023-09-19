@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 16:14:34 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/07 16:10:04 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/11 11:33:08 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 const int Fixed::_fbits = 8;
 
-// #define MAKE_INT_FIXED(x) ((x) << FRACT_BITS)
-// #define MAKE_FLOAT_FIXED(x) ((int_fixed)((x) * FIXED_POINT_ONE))
-// Converting from fixed-point to floating-point
-// Convert the fixed-point number as an integer.
-// Divide the number by 2^n (2 to the power of n).
-
-std::ostream &operator<<(std::ostream &out, const Fixed &f) 
+std::ostream &operator<<(std::ostream &out, const Fixed &f)
 {
     out << f.toFloat();
     return(out);
@@ -60,7 +54,7 @@ int Fixed::toInt(void) const
 float Fixed::toFloat(void) const
 {
     // int i = abs(this->_value);
-    return(this->_value / pow(2, Fixed::_fbits));    
+    return(this->_value / pow(2, Fixed::_fbits));
 }
 
 Fixed &Fixed::operator=(const Fixed &f)
