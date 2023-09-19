@@ -1,4 +1,4 @@
-NAME    = fixed
+NAME    = bsp
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++
