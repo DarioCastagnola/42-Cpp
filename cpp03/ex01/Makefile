@@ -1,4 +1,4 @@
-NAME    = fixed
+NAME    = cl4p-tp
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++

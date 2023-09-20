@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.cpp                                       :+:      :+:    :+:   */
+/*   Claptrap copy.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:21 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 13:47:54 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:29:20 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Claptrap.hpp"
 
-Claptrap::Claptrap(std::string name): _name(name), _hp(10), _ep(10), _ad(0) {
+Claptrap::Claptrap(std::string name): _name(name), _hp(100), _ep(50), _ad(20) {
     std::cout << "Constructor Called" << std::endl;
 }
 
