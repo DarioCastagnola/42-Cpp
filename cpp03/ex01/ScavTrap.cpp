@@ -6,13 +6,16 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:35 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 14:54:55 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:17:20 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
+    this->_hp = 100;
+    this->_ep = 50;
+    this->_ad = 20;
     std::cout << "Scav Constructor Called" << std::endl;
 }
 

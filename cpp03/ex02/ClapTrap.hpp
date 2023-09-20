@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:24 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 14:51:55 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 15:37:56 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class ClapTrap
         int getAD(void);
         void setAD(int amount);
     
-    private:
+    protected:
         std::string _name;
         int _hp;
         int _ep;
