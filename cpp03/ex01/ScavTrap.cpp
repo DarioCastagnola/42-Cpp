@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scavtrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:35 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 14:40:42 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:54:55 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scavtrap.hpp"
+#include "ScavTrap.hpp"
 
-Scavtrap::Scavtrap(std::string name): Claptrap(name) {
+ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
     std::cout << "Scav Constructor Called" << std::endl;
 }
 
-Scavtrap::Scavtrap(const Scavtrap &s): Claptrap(s) {
+ScavTrap::ScavTrap(const ScavTrap &s): ClapTrap(s) {
     std::cout << "Scav Copy Constructor Called" << std::endl;
 }
 
-Scavtrap &Scavtrap::operator=(const Scavtrap &s) {
+ScavTrap &ScavTrap::operator=(const ScavTrap &s) {
     if (this == &s)
         return (*this);
     return(*this);
 }
 
-Scavtrap::~Scavtrap(void) {
+ScavTrap::~ScavTrap(void) {
     std::cout << "Scav Destructor Called" << std::endl;
 }
  
-void Scavtrap::guardGate(void) {
+void ScavTrap::guardGate(void) {
     std::cout << this->getName() << " activates gatekeeper mode. HE SHALL NOT LET YOU PASS!" << std::endl;
 }

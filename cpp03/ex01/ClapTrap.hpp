@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap.hpp                                       :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:24 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 12:19:07 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:56:02 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 #include <iostream>
 #include <string>
 
-class Claptrap
+class ClapTrap
 {
     public:
-        Claptrap(std::string name);
-        Claptrap(Claptrap const &c);
-        Claptrap &operator=(const Claptrap &c);
-        ~Claptrap(void);
+        ClapTrap(std::string name);
+        ClapTrap(ClapTrap const &c);
+        ClapTrap &operator=(const ClapTrap &c);
+        ~ClapTrap(void);
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);
         void beRepaired(unsigned int amount);

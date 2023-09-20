@@ -1,4 +1,4 @@
-NAME    = cl4p-tp
+NAME    = ClaptasticVoyage
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++

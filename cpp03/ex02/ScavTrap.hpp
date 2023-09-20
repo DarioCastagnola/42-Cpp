@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scavtrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:32 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 14:20:15 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:53:23 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-#include "Claptrap.hpp"
+#include "ClapTrap.hpp"
 
-class  Scavtrap : public Claptrap
+class  Scavtrap : public ClapTrap
 {
     public:
         Scavtrap(std::string name);

@@ -1,56 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Claptrap copy.cpp                                  :+:      :+:    :+:   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:21 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 14:29:20 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:52:39 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Claptrap.hpp"
+#include "ClapTrap.hpp"
 
-Claptrap::Claptrap(std::string name): _name(name), _hp(100), _ep(50), _ad(20) {
+ClapTrap::ClapTrap(std::string name): _name(name), _hp(100), _ep(50), _ad(20) {
     std::cout << "Constructor Called" << std::endl;
 }
 
-Claptrap::Claptrap(Claptrap const &c): _name(c._name), _hp(c._hp), _ep(c._ep), _ad(c._ad) {
+ClapTrap::ClapTrap(ClapTrap const &c): _name(c._name), _hp(c._hp), _ep(c._ep), _ad(c._ad) {
     std::cout << "Copy Constructor Called" << std::endl;
 }
 
-Claptrap &Claptrap::operator=(const Claptrap &c) {
+ClapTrap &ClapTrap::operator=(const ClapTrap &c) {
     if (this == &c)
         return (*this);
     return(*this);
 }
 
-Claptrap::~Claptrap(void) {
+ClapTrap::~ClapTrap(void) {
     std::cout << "Destructor Called" << std::endl;
 }
 
-std::string Claptrap::getName(void) {
+std::string ClapTrap::getName(void) {
     return _name;
 }
 
-int Claptrap::getAD(void) {
+int ClapTrap::getAD(void) {
     return _ad;
 }
 
-int Claptrap::getEP(void) {
+int ClapTrap::getEP(void) {
     return _ep;
 }
 
-int Claptrap::getHP(void) {
+int ClapTrap::getHP(void) {
     return _hp;
 }
 
-void Claptrap::setAD(int amount) {
+void ClapTrap::setAD(int amount) {
     this->_ad = amount;
 }
 
-void Claptrap::attack(const std::string &target) {
+void ClapTrap::attack(const std::string &target) {
     if (this->_hp <= 0) {
         std::cout << this->_name << " recieved lethal damage, he can no longer fight!" << std::endl;
         return ;
@@ -63,7 +63,7 @@ void Claptrap::attack(const std::string &target) {
     std::cout << this->_name << " karate-chops " << target << " , causing " << this->_ad << " points of damage!" << std::endl;
 }
 
-void Claptrap::takeDamage(unsigned int amount) {
+void ClapTrap::takeDamage(unsigned int amount) {
     this->_hp -= amount;
     if (this->_hp <= 0) {
         std::cout << this->_name << " recieved lethal damage, he can no longer fight!" << std::endl;
@@ -72,7 +72,7 @@ void Claptrap::takeDamage(unsigned int amount) {
     std::cout << this->_name << " took a big hit! He's left with " << this->_hp << " after recieving " << amount << " point of damage!" << std::endl;
 }
 
-void Claptrap::beRepaired(unsigned int amount) {
+void ClapTrap::beRepaired(unsigned int amount) {
     if (this->_hp <= 0) {
         std::cout << this->_name << " recieved lethal damage, he can no longer fight!" << std::endl;
         return ;
