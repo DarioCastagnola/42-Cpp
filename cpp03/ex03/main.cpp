@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:29 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 16:34:40 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/21 14:13:17 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ int	main(void)
 	solid.takeDamage(gas.getAD());
 	gas.attack(liquid.getName());
 	liquid.takeDamage(gas.getAD());
+	supersolid.attack(plasma.getName());
+	plasma.takeDamage(supersolid.getAD());
+	supersolid.attack(liquid.getName());
+	liquid.takeDamage(supersolid.getAD());
+	supersolid.attack(gas.getName());
+	gas.takeDamage(supersolid.getAD());
 	supersolid.whoAmI();
 	return 0;
 }
