@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 14:47:34 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 15:46:36 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:39:30 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ FragTrap::FragTrap(const FragTrap &s): ClapTrap(s) {
 FragTrap &FragTrap::operator=(const FragTrap &s) {
     if (this == &s)
         return (*this);
-    return(*this);
+    this->_name = s.getName();
+    this->_hp = s.getHP();
+    this->_ep = s.getEP();
+    this->_ad = s.getAD();
+    return (*this);
 }
 
 FragTrap::~FragTrap(void) {

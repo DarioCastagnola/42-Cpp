@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:21 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 15:53:13 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:44:05 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,30 @@ ClapTrap::ClapTrap(ClapTrap const &c): _name(c._name), _hp(c._hp), _ep(c._ep), _
 ClapTrap &ClapTrap::operator=(const ClapTrap &c) {
     if (this == &c)
         return (*this);
-    return(*this);
+    this->_name = c.getName();
+    this->_hp = c.getHP();
+    this->_ep = c.getEP();
+    this->_ad = c.getAD();
+    return (*this);
 }
 
 ClapTrap::~ClapTrap(void) {
     std::cout << "Destructor Called" << std::endl;
 }
 
-std::string ClapTrap::getName(void) {
+std::string ClapTrap::getName(void) const {
     return _name;
 }
 
-int ClapTrap::getAD(void) {
+int ClapTrap::getAD(void) const {
     return _ad;
 }
 
-int ClapTrap::getEP(void) {
+int ClapTrap::getEP(void) const {
     return _ep;
 }
 
-int ClapTrap::getHP(void) {
+int ClapTrap::getHP(void) const {
     return _hp;
 }
 

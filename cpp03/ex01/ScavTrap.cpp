@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:35 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 15:17:20 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:43:15 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ ScavTrap::ScavTrap(const ScavTrap &s): ClapTrap(s) {
 ScavTrap &ScavTrap::operator=(const ScavTrap &s) {
     if (this == &s)
         return (*this);
-    return(*this);
+    this->_name = s.getName();
+    this->_hp = s.getHP();
+    this->_ep = s.getEP();
+    this->_ad = s.getAD();
+    return (*this);
 }
 
 ScavTrap::~ScavTrap(void) {

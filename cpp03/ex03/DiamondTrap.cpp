@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:13:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/21 14:03:34 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/21 15:38:37 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,11 @@ DiamondTrap::DiamondTrap(const DiamondTrap &s): ClapTrap(s), ScavTrap(s), FragTr
 DiamondTrap &DiamondTrap::operator=(const DiamondTrap &s) {
     if (this == &s)
         return (*this);
-    return(*this);
+    this->_name = s.getName();
+    this->_hp = s.getHP();
+    this->_ep = s.getEP();
+    this->_ad = s.getAD();
+    return (*this);
 }
 
 DiamondTrap::~DiamondTrap(void) {
