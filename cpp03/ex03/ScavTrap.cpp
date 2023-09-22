@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:35 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/21 15:37:47 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:17:08 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,21 @@ ScavTrap::~ScavTrap(void) {
  
 void ScavTrap::guardGate(void) {
     std::cout << this->getName() << " activates gatekeeper mode. HE SHALL NOT LET YOU PASS!" << std::endl;
+}
+
+void ScavTrap::attack(const std::string& target){
+        if (this->_hp <= 0) {
+        std::cout << this->_name << " received lethal damage, he can no longer fight!" << std::endl;
+        return ;
+    }
+    if (this->_ep == 0) {
+        std::cout << this->_name << " has no energy left, therefore he cannot perform this action!" << std::endl;
+        return ;
+    }
+    this->_ep -= 1;
+    if (this->_ad <= 0) {
+        std::cout << this->_name << " throws the best punch he could muster but misses the target!" << std::endl;
+        return ;
+    }
+    std::cout << this->_name << " uses SURPRISE ATTACK and hits " << target << " , causing " << this->_ad << " points of damage!, Ouch that looks like it hurts!" << std::endl;
 }

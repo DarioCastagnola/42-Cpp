@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:48:32 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/20 16:25:15 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:25:06 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ class  ScavTrap : virtual public ClapTrap
         ScavTrap &operator=(const ScavTrap &s);
         ~ScavTrap(void);
         void guardGate(void);
+        void attack(const std::string& target);
 };
