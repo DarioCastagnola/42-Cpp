@@ -6,15 +6,19 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:46:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/21 16:40:40 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:59:06 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Animal.hpp"
 
-Animal::Animal(void): _type("") {;}
+Animal::Animal(void): _type("") {
+    std::cout << GREEN << "Animal Constructor called" << RESET << std::endl;
+}
 
-Animal::Animal(std::string name): _type(name) {;}
+Animal::Animal(std::string name): _type(name) {
+    std::cout << GREEN << "Animal Constructor called" << RESET << std::endl;
+}
 
 Animal::Animal(const Animal &a) {
     *this = a;
@@ -27,13 +31,13 @@ Animal &Animal::operator=(const Animal &a) {
     return(*this);
 }
 
-Animal::~Animal(void) {;}
+Animal::~Animal(void) {
+    std::cout << RED << "Animal Destructor called" << RESET << std::endl;
+}
 
 std::string Animal::getType(void) const {
     return this->_type;
 }
 
-void Animal::makeSound() const {
-    std::cout << "Animal noises I guess" << std::endl; 
-}
+void Animal::makeSound() const {;}
 
