@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   IMateriaSource.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 10:37:26 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:31 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/09/25 14:38:59 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/09/25 14:39:45 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const &type): _type(type) {;}
-
-AMateria::AMateria(const AMateria &obj) {;}
-
-AMateria &AMateria::operator=(const AMateria &obj) {
-    if (this == &obj)
-        return (*this);
-    this->_type = obj._type;
-}
-
-AMateria::~AMateria(void) {;}
-
+class IMateriaSource
+{
+    public:
+    virtual ~IMateriaSource() {}
+    virtual void learnMateria(AMateria*) = 0;
+    virtual AMateria* createMateria(std::string const & type) = 0;
+};

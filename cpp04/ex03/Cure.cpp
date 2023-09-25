@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 10:37:26 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:31 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/09/25 15:57:04 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/09/25 16:37:02 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "Cure.hpp"
 
-AMateria::AMateria(std::string const &type): _type(type) {;}
+Cure::Cure(void): AMateria("Cure") {;}
 
-AMateria::AMateria(const AMateria &obj) {;}
+Cure::Cure(const Cure &obj): AMateria(obj) {
+    *this = obj;
+}
 
-AMateria &AMateria::operator=(const AMateria &obj) {
+Cure &Cure::operator=(const Cure &obj) {
     if (this == &obj)
         return (*this);
     this->_type = obj._type;
 }
 
-AMateria::~AMateria(void) {;}
+Cure::~Cure(void) {;}
 
+void Cure::use(ICharacter &target) {
+    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+}

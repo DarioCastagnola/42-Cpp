@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Ice.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 10:37:26 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:31 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/09/25 15:40:27 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/09/25 16:38:49 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
+#include "Ice.hpp"
 
-AMateria::AMateria(std::string const &type): _type(type) {;}
+Ice::Ice(void): AMateria("ice") {;}
 
-AMateria::AMateria(const AMateria &obj) {;}
+Ice::Ice(const Ice &obj): AMateria(obj) {
+    *this = obj;
+}
 
-AMateria &AMateria::operator=(const AMateria &obj) {
+Ice &Ice::operator=(const Ice &obj) {
     if (this == &obj)
         return (*this);
     this->_type = obj._type;
 }
 
-AMateria::~AMateria(void) {;}
+Ice::~Ice(void) {;}
 
+void Ice::use(ICharacter &target) {
+    std::cout << BLUE << "* shoots an icebolt at " << target.getName() << " *" << std::endl;
+}

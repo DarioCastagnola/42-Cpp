@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:25:22 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/22 16:22:18 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/25 11:30:18 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # endif
 #include "Brain.hpp"
 
-class Brain;
+// class Brain;
 
 class Animal
 {
