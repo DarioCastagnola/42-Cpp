@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:41:08 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 15:56:10 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/26 12:48:33 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@ class Cure : public AMateria
         Cure(Cure const &obj);
         Cure &operator=(const Cure &obj);
         ~Cure(void);
-        Cure* clone() const;
-        void use(ICharacter& target);
+        virtual AMateria *clone() const;
+        virtual void use(ICharacter& target);
 };

@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:37:28 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 16:41:40 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 10:34:56 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ class AMateria
         std::string _type;
     public:
         AMateria(std::string const &type);
-        AMateria(const AMateria &obj);
-        AMateria &operator=(const AMateria &obj);
-        ~AMateria(void);
+        virtual ~AMateria(void){};
         std::string const &getType() const; //Returns the materia type
         virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+        virtual void use(ICharacter& target) = 0;
 };

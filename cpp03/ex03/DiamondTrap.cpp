@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:13:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/21 15:38:37 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/28 13:39:13 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,4 @@ DiamondTrap::~DiamondTrap(void) {
  
 void DiamondTrap::whoAmI(void) {
     std::cout << "My name is " << this->_name << ". You shall call my master " << ClapTrap::_name + "_clap_name" << std::endl;
-}
+}   

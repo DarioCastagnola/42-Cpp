@@ -6,21 +6,18 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:37:26 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 15:43:31 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:46:15 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 
-AMateria::AMateria(std::string const &type): _type(type) {;}
-
-AMateria::AMateria(const AMateria &obj) {;}
-
-AMateria &AMateria::operator=(const AMateria &obj) {
-    if (this == &obj)
-        return (*this);
-    this->_type = obj._type;
+AMateria::AMateria(std::string const &type): _type(type) {
+	std::cout << GREEN << "AMateria Constructor Called" << RESET << std::endl;
 }
 
-AMateria::~AMateria(void) {;}
+const std::string	&AMateria::getType(void) const {
+	return this->_type;
+}
+
 

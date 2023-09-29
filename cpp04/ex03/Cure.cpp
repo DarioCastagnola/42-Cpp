@@ -6,14 +6,16 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/25 16:37:02 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 11:48:04 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Cure.hpp"
 
-Cure::Cure(void): AMateria("Cure") {;}
+Cure::Cure(void): AMateria("cure") {
+    std::cout << GREEN << "Cure Constructor Called" << RESET << std::endl;
+}
 
 Cure::Cure(const Cure &obj): AMateria(obj) {
     *this = obj;
@@ -23,10 +25,17 @@ Cure &Cure::operator=(const Cure &obj) {
     if (this == &obj)
         return (*this);
     this->_type = obj._type;
+    return (*this);
 }
 
-Cure::~Cure(void) {;}
+Cure::~Cure(void) {
+    std::cout << RED << "Cure Destructor Called" << RESET << std::endl;
+}
 
+AMateria *Cure::clone() const {
+    return (new Cure(*this));
+}
+ 
 void Cure::use(ICharacter &target) {
-    std::cout << "* heals " << target.getName() << "'s wounds *" << std::endl;
+    std::cout << "* " << YELLOW << "heals " << BLUE << target.getName() << RESET << "'s wounds *" << std::endl;
 }
