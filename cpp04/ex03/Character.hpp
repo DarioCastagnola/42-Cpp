@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:06:29 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/28 11:28:03 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 15:57:39 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,5 @@ class Character : public ICharacter
     private:
         std::string _name;
         AMateria *_inventory[4];
-        AMateria *_floor[10];
+        AMateria *_floor[20];
 };

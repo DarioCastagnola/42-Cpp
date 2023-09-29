@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 11:25:08 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/29 11:48:37 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:22:41 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &obj) {
         return *this;
     for (int i = 0; i < 4; i++)
 	{
-		if (this->_inventory[i] != 0)
-			delete this->_inventory[i];
-		this->_inventory[i] = obj._inventory[i];
+		delete this->_inventory[i];
+		this->_inventory[i] = obj._inventory[i]->clone();
 	}
 	return (*this);
 }

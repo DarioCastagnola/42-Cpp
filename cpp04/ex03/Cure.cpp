@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:57:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/29 11:48:04 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:27:34 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ Cure::~Cure(void) {
 }
 
 AMateria *Cure::clone() const {
-    return (new Cure(*this));
+    AMateria	*clone;
+	clone = new Cure();
+	return (clone);
 }
  
 void Cure::use(ICharacter &target) {

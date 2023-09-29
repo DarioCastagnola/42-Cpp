@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:40:27 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/29 11:48:21 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/09/29 14:27:42 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ Ice::~Ice(void) {
 }
 
 AMateria *Ice::clone() const {
-	return (new Ice(*this));
+	AMateria	*clone;
+	clone = new Ice();
+	return (clone);
 }
 
 void Ice::use(ICharacter &target) {
