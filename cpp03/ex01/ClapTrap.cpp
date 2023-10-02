@@ -6,18 +6,18 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:25:21 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/09/21 15:44:05 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/02 10:10:59 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(std::string name): _name(name), _hp(10), _ep(10), _ad(0) {
-    std::cout << "Constructor Called" << std::endl;
+    std::cout << "Clap Constructor Called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &c): _name(c._name), _hp(c._hp), _ep(c._ep), _ad(c._ad) {
-    std::cout << "Copy Constructor Called" << std::endl;
+    std::cout << "Clap Copy Constructor Called" << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &c) {
@@ -31,7 +31,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &c) {
 }
 
 ClapTrap::~ClapTrap(void) {
-    std::cout << "Destructor Called" << std::endl;
+    std::cout << "Clap Destructor Called" << std::endl;
 }
 
 std::string ClapTrap::getName(void) const {
