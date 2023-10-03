@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:37:47 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/03 15:40:21 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:42:44 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,21 @@ void Bureaucrat::gradeIncrement() {
     std::cout << GREEN << "Permission granted" << RESET << std::endl;
 }
 
-void Bureaucrat::signForm(const Form &obj) {
-    if (obj.getSign() == true)
+void Bureaucrat::signForm(Form &obj) {
+    try
+    {
+        obj.beSigned(*this);
         std::cout << this->getName() << " signed " << obj.getName() << std::endl;
-    else
-        std::cout << this->getName() << " couldn't sign " << obj.getName() << " because grade is too low" << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << this->getName() << " couldn't sign " << obj.getName() << " " << PURPLE << e.what() << RESET <<std::endl;
+    }
+    
+    // if (obj.getSign() == true)
+    //     std::cout << this->getName() << " signed " << obj.getName() << std::endl;
+    // else
+    //     std::cout << this->getName() << " couldn't sign " << obj.getName() << ", form has not been signed." << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &obj) {

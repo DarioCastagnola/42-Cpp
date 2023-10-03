@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:37:44 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/03 15:46:57 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/03 16:37:41 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class Bureaucrat
     int getGrade() const;
     void gradeIncrement();
     void gradeDecrement();
-    void signForm(const Form &obj);
+    void signForm(Form &obj);
     class GradeTooHighException: public std::exception
     {
       virtual const char* what() const throw()
