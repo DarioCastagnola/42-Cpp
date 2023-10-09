@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:37:50 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/09 11:40:16 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:51:17 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ int main(void) {
         president50.executeForm(*pardonform);
         president50.executeForm(*shruberryform);
         president50.executeForm(*robotomyform);
+        delete (pardonform);
+        delete (shruberryform);
+        delete (robotomyform);
         // president51.signForm(legge1);
         // president50.signForm(legge1);
         // president51.signForm(legge2);
