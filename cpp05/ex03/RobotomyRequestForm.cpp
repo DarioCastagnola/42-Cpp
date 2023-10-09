@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 10:58:20 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/06 12:37:03 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:38:35 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,13 @@ RobotomyRequestForm::~RobotomyRequestForm() {
 }
 
 void RobotomyRequestForm::execute(const Bureaucrat &obj) const {
-    if (this->getSign())
+    if (obj.getGrade() <= this->getExecGrade() && this->getSign())
     {
-        if (obj.getGrade() <= this->getExecGrade())
-        {
-            srand(time(NULL));
-            if (rand() % 2 == 1)
-                std::cout << "Informs that " << this->_target <<  " has been successfully robotomized." << std::endl;
-            else
-                std::cout << "Informs that " << this->_target <<  "'s robotomy failed." << std::endl;
-        }
+        srand(time(NULL));
+        if (rand() % 2 == 1)
+            std::cout << "Informs that " << this->_target <<  " has been successfully robotomized." << std::endl;
+        else
+            std::cout << "Informs that " << this->_target <<  "'s robotomy failed." << std::endl;
     }
     else
         throw GradeTooHighException();

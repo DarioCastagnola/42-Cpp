@@ -69,6 +69,6 @@ void AForm::execute(const Bureaucrat &obj) const {
 }
 
 std::ostream &operator<<(std::ostream &out, AForm const &obj) {
-    out << obj.getName() << ", required signing grade " << obj.getSignGrade() << ", Aform's required executing grade " << obj.getExecGrade() << " Sign = " << obj.getSign();
+    out << CYAN << obj.getName() << RESET << ": required signing grade " << obj.getSignGrade() << ",  required executing grade " << obj.getExecGrade() << " Sign = " << obj.getSign();
     return out;
 }

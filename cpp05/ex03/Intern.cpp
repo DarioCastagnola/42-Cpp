@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:27:05 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/06 16:48:41 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:35:33 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 Intern::Intern(void) {
 	std::cout << YELLOW << "Intern constructor called" << RESET << std::endl;
-    this->_request[0] = "shubbery creation";
+    this->_request[0] = "shrubbery creation";
     this->_request[1] = "robotomy request";
     this->_request[2] = "presidential pardon";
 	return ;
@@ -58,27 +58,20 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
     int i = 0;
 
 	form = 0;
-	try
-	{
-		i = this->checkRequest(name);
+	i = this->checkRequest(name);
 
-		switch (i)
-		{
-			case 0:
-				form = new ShrubberyCreationForm(target);
-				break;
-			case 1:
-				form = new RobotomyRequestForm(target);
-				break;
-			case 2:
-				form = new PresidentialPardonForm(target);
-				break;
-			default: {}
-		}
-	}
-	catch (std::exception &e)
+	switch (i)
 	{
-		std::cout << PURPLE << "Invalid operation: " << RESET << e.what() << std::endl;
+		case 0:
+			form = new ShrubberyCreationForm(target);
+			break;
+		case 1:
+			form = new RobotomyRequestForm(target);
+			break;
+		case 2:
+			form = new PresidentialPardonForm(target);
+			break;
+		default: {}
 	}
 	return (form);
 }
