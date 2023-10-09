@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:27:05 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/09 11:35:33 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/09 11:58:20 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,15 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 	{
 		case 0:
 			form = new ShrubberyCreationForm(target);
+			std::cout << "Intern creates: " << "ShrubberyCreationForm" << std::endl;
 			break;
 		case 1:
 			form = new RobotomyRequestForm(target);
+			std::cout << "Intern creates: " << "RobotomyRequestForm" << std::endl;
 			break;
 		case 2:
 			form = new PresidentialPardonForm(target);
+			std::cout << "Intern creates: " << "PresidentialPardonForm" << std::endl;
 			break;
 		default: {}
 	}

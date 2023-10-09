@@ -17,7 +17,7 @@ clean:
 	$(RM) $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) file
 
 re: fclean all
 
