@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:37:50 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/03 16:44:24 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/09 15:08:00 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main(void) {
     try {
-        Form legge("Bombing Children", 30, 1);
+        Form legge("Send Help to Countries", 30, 1);
         std::cout << legge << std::endl;
         Bureaucrat president51("Roosevelt", 149);
         Bureaucrat president50("Obama", 2);

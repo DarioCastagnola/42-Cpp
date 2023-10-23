@@ -5,25 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 15:37:50 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/09 15:01:05 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/10/23 16:11:40 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/10/23 16:35:42 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <limits>
+#include "ScalarConverter.hpp"
 
-int main(void) {
-    try {   
-        Bureaucrat president52("Trump", 1);
-        Bureaucrat president51("Roosevelt", 150);
-        Bureaucrat president50("Obama", 2);
-        president50.gradeIncrement();
-        std::cout << president50 << std::endl;
-        president51.gradeDecrement();
-        std::cout << president51 << std::endl;
-        president52.gradeIncrement();
-    }
-    catch (std::exception &e) { std::cout << PURPLE << "exception caught" << RESET << std::endl; }  
+int	main(int ac, char **av)
+{
+	ScalarConverter	boh;
 
-    return 1;
+	if (ac != 2)
+	{
+		std::cerr << RED
+		<< "Error\nWrong arguments"
+		<< RESET << std::endl;
+		return (1);
+	}
+	for (int i = 1; i < ac; i++)
+	{
+		boh.convert(av[i]);
+	}
+	return (0);
 }
