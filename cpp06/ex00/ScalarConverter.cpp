@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:20:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/23 16:35:53 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/24 16:12:33 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,23 @@ bool ScalarConverter::check_input(std::string str) {
             ScalarConverter::_type = 1;
         return (!std::isdigit(str[0]) || !std::isalpha(str[0]));
     }
-    	for (int i = 0; i < (int)str.length(); i++)
+    if (str == "nan" || str == "nanf" || str == "+inff" || str == "-inff" || str == "-inf" || str == "+inf")
+    {
+        ScalarConverter::_type = 0;
+        return true;
+    }
+    for (int i = 0; i < (int)str.length(); i++)
 	{
-		if (!std::isdigit(str[i]) && str[i] != '.' && str[i] != 'f')
-			return (false);
-		j += (str[i] == 'f');
+		if (!std::isdigit(str[i]) && str[i] != '.' && str[i] != 'f' && str[i] != '-' && str[i] != '+')
+            return (false);
+    	j += (str[i] == 'f');
 		k += (str[i] == '.');
 	}
 	if (j > 1 || k > 1 || (j && !k))
+    {
 		return (false);
-	ScalarConverter::_type = j + k + 1;
+    }
+    ScalarConverter::_type = j + k + 1;
 	return (true);
 }
 
@@ -88,6 +95,12 @@ void ScalarConverter::convert(std::string str) {
         f = static_cast<float>(n);
         d = static_cast<double>(n);
         break;
+    case 0:
+        d = atof(str.c_str());
+        n = static_cast<int>(d);
+        c = static_cast<char>(n);
+        f = d;
+        break;
     case 1:
         n = stoi(str);
         c = static_cast<char>(n);
@@ -99,9 +112,10 @@ void ScalarConverter::convert(std::string str) {
         f = d;
         n = static_cast<int>(d);
         c = static_cast<char>(n);
+        break;
     }
     if (!ScalarConverter::_type)
-        std::cout << "suca" << std::endl;
+        std::cout << "char: not displayable\nint: not displayable" << std::endl;
     else
     {
         if (n < 32 || n > 128)

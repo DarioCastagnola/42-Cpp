@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 16:11:40 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/23 16:35:42 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/24 12:27:48 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@
 
 int	main(int ac, char **av)
 {
-	ScalarConverter	boh;
-
 	if (ac != 2)
 	{
 		std::cerr << RED
@@ -29,7 +27,7 @@ int	main(int ac, char **av)
 	}
 	for (int i = 1; i < ac; i++)
 	{
-		boh.convert(av[i]);
+		ScalarConverter::convert(av[i]);
 	}
 	return (0);
 }
