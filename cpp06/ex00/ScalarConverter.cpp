@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:20:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/24 16:12:33 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/26 11:05:14 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,11 +114,13 @@ void ScalarConverter::convert(std::string str) {
         c = static_cast<char>(n);
         break;
     }
-    if (!ScalarConverter::_type)
-        std::cout << "char: not displayable\nint: not displayable" << std::endl;
+    if (ScalarConverter::_type == 0)
+        std::cout << "char: impossible\nint: impossible" << std::endl;
     else
     {
-        if (n < 32 || n > 128)
+        if (n < 0)
+            std::cout << "char: impossible" << std::endl;
+        else if (n < 32 || n > 128)
             std::cout << "char: not displayable" << std::endl;
         else
             std::cout << "char: " << c << std::endl;
