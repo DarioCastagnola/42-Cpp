@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:18:42 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/26 16:49:41 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/27 11:05:00 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 #include "C.hpp"
 
 void identify(Base* p) {
-    if (dynamic_cast<A*>(p))
+    if (dynamic_cast<A*>(p) != NULL)
         std::cout << "A" << std::endl;
-    else if (dynamic_cast<B*>(p))
+    else if (dynamic_cast<B*>(p) != NULL)
         std::cout << "B" << std::endl;
-    if (dynamic_cast<C*>(p))
+    if (dynamic_cast<C*>(p) != NULL)
         std::cout << "C" << std::endl;
 }
 
@@ -70,5 +70,6 @@ int main() {
     start = generate();
     identify(start);
     identify(*start);
+    delete start;
     return 1;
 }

@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:20:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/26 11:05:14 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:18:15 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ ScalarConverter	&ScalarConverter::operator=(ScalarConverter const &obj)
 	return (*this);
 }
 
-int ScalarConverter::stoi(std::string str) {
+double ScalarConverter::stod(std::string str) {
     std::stringstream ss;
     ss << str;
-    int x = 0;
+    double x = 0;
     ss >> x;
     return x;
 }
@@ -48,6 +48,9 @@ int ScalarConverter::stoi(std::string str) {
 bool ScalarConverter::check_input(std::string str) {
     int j = 0;
     int k = 0;
+    int p = 0;
+    int m = 0;
+    
     if (!str[0])
         return false;
     if (str.size() == 1)
@@ -67,8 +70,12 @@ bool ScalarConverter::check_input(std::string str) {
             return (false);
     	j += (str[i] == 'f');
 		k += (str[i] == '.');
+        m += (str[i] == '-');
+        p += (str[i] == '+');
+        if (j == 1 && str[str.size() - 1] != 'f')
+            return (false);
 	}
-	if (j > 1 || k > 1 || (j && !k))
+	if (m > 1 || p > 1 || j > 1 || k > 1 || (j && !k))
     {
 		return (false);
     }
@@ -91,9 +98,9 @@ void ScalarConverter::convert(std::string str) {
     {
     case -1:
         c = str[0];
-        n = static_cast<int>(c);
-        f = static_cast<float>(n);
-        d = static_cast<double>(n);
+        d = static_cast<double>(c);
+        f = static_cast<float>(d);
+        n = static_cast<int>(d);
         break;
     case 0:
         d = atof(str.c_str());
@@ -102,10 +109,10 @@ void ScalarConverter::convert(std::string str) {
         f = d;
         break;
     case 1:
-        n = stoi(str);
-        c = static_cast<char>(n);
-        f = static_cast<float>(n);
-        d = static_cast<double>(n);
+        d = stod(str);
+        c = static_cast<char>(d);
+        f = static_cast<float>(d);
+        n = static_cast<int>(d);
         break;
     default:
         d = atof(str.c_str());
@@ -118,9 +125,9 @@ void ScalarConverter::convert(std::string str) {
         std::cout << "char: impossible\nint: impossible" << std::endl;
     else
     {
-        if (n < 0)
+        if (n < 0 || n >= 128)
             std::cout << "char: impossible" << std::endl;
-        else if (n < 32 || n > 128)
+        else if (n < 32 || n == 127)
             std::cout << "char: not displayable" << std::endl;
         else
             std::cout << "char: " << c << std::endl;

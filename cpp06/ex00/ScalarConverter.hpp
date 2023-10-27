@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 11:20:42 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/24 15:34:13 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/27 12:04:23 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class ScalarConverter
     public:
         static void convert(std::string str);
         static bool check_input(std::string str);
-        static int  stoi(std::string str);
+        static double  stod(std::string str);
 
     private:    
         ScalarConverter();
