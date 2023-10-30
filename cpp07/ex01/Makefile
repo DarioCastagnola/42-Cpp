@@ -1,4 +1,4 @@
-NAME    = converter
+NAME    = iter
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++

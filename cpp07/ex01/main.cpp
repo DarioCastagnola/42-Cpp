@@ -6,25 +6,40 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:02:28 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/27 16:23:37 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/30 11:52:13 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "whatever.hpp"
+#include "iter.hpp"
 
-int main( void )
+class Awesome
 {
-	int a = 2;
-	int b = 3;
-	::swap( a, b );
-	std::cout << "a = " << a << ", b = " << b << std::endl;
-	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
-	std::string c = "chaine1";
-	std::string d = "chaine2";
-	::swap(c, d);
-	std::cout << "c = " << c << ", d = " << d << std::endl;
-	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-	return 0;
+  public:
+    Awesome( void ) : _n( 42 ) { return; }
+    int get( void ) const { return this->_n; }
+  private:
+    int _n;
+};
+
+std::ostream & operator<<( std::ostream & o, Awesome const & rhs )
+{
+  o << rhs.get();
+  return o;
+}
+
+template< typename T >
+void print( T& x )
+{
+  std::cout << x << std::endl;
+  return;
+}
+
+int main() {
+  int tab[] = { 0, 1, 2, 3, 4 };
+  Awesome tab2[5];
+
+  iter( tab, 5, print<const int> );
+  iter( tab2, 5, print<Awesome> );
+
+  return 0;
 }
