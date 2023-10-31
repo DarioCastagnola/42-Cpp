@@ -1,4 +1,4 @@
-NAME    = iter
+NAME    = Array
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++

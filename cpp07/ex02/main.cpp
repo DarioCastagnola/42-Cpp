@@ -6,17 +6,29 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:02:28 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/30 15:31:25 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/10/31 16:00:25 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <stdlib.h>
+#include <math.h>
 #include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
 {
+    try {
+        Array<int> a;
+        Array<int> b(5);
+        std::cout << a[0];
+        b[0] = 3;
+        std::cout << b[0];
+        a = b;
+        b[0] = 5;
+        std::cout << b[0] << std::endl;
+        std::cout << a[0] << std::endl;
+    }
+    catch (std::exception &e) { std::cerr << e.what() << '\n'; }
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -61,6 +73,6 @@ int main(int, char**)
     {
         numbers[i] = rand();
     }
-    delete [] mirror;//
+    delete [] mirror;
     return 0;
 }
