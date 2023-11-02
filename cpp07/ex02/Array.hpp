@@ -6,12 +6,21 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:07 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/31 15:34:34 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:00:15 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+# ifndef COLORS
+#  define GREEN "\033[1;32m"
+#  define RED "\033[1;31m"
+#  define CYAN "\033[1;36m"
+#  define YELLOW "\033[1;33m"
+#  define BLUE "\033[1;34m"
+#  define PURPLE "\033[1;35m"
+#  define RESET "\033[0m"
+# endif
 
 template <typename T>
 class Array {
@@ -38,17 +47,20 @@ class Array {
 
 template <typename T>
 Array<T>::Array(void): _size(0), _array(new T[0]) {
+	std::cout << GREEN << "Empty Array constructed" << RESET << std::endl;
 	return ;
 }
 
 template <typename T>
 Array<T>::Array(unsigned int n): _size(n) {
+	std::cout << GREEN << "Array constructed" << RESET << std::endl;
 	this->_array = new T[n];
 	return ;
 }
 
 template <typename T>
 Array<T>::Array(const Array<T> &obj): _size(0), _array(0) {
+	std::cout << GREEN << "Copy of Array constructed" << RESET << std::endl;
 	*this = obj;
 }
 
@@ -73,6 +85,7 @@ Array<T> &Array<T>::operator=(const Array<T> &obj) {
 
 template <typename T>
 Array<T>::~Array() {
+	std::cout << RED << "Array Deconstrutor called" << RESET << std::endl;
 	delete [] this->_array;
 }
 
