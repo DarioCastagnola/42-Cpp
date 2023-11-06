@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 15:44:38 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/06 11:48:44 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/11/06 11:42:38 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/11/06 16:10:05 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,37 @@
 # define RESET "\033[0m"
 #endif
 
+class Span
+{
+    public:
+        Span(unsigned int n);
+        Span(const Span &obj);
+        Span &operator=(const Span &obj);
+        ~Span();
+        template <typename T>
+        void    addLotsOfNumbers(T begin, T end);
+        void    addNumber(int n);
+        int     shortestSpan();
+        int     longestSpan();
+        int     getValue(int idx);
+        class NoSpaceLeft: public std::exception
+        {
+            virtual const char* what() const throw()
+        {
+            return "Full";
+        }
+  };
+    private:
+        unsigned int _size;
+        std::vector<int> _myVector;
+};
 
-template<typename T>
-int easyfind(T smth, int num) {
-    std::vector<int>::iterator p;
-    p = find(smth.begin(), smth.end() , num);
-    if (p != smth.end())
-    {
-        std::cout << GREEN << "Element found in myVector" << RESET << std::endl;
-        return 1;
-    }
-    else
-    {
-        std::cout << RED << "Element not found in myVector" << RESET << std::endl;
-        return 0;
-    }
+template <typename T>
+void    Span::addLotsOfNumbers(T begin, T end)
+{
+	while (begin != end)
+	{
+		this->addNumber(*begin);
+		begin++;
+	}
 }

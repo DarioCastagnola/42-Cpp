@@ -1,4 +1,4 @@
-NAME    = Serializer
+NAME    = Span
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++

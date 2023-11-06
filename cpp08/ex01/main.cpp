@@ -5,20 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 16:09:08 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/06 11:49:07 by dcastagn         ###   ########.fr       */
+/*   Created: 2023/11/06 14:16:46 by dcastagn          #+#    #+#             */
+/*   Updated: 2023/11/06 16:24:49 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
+#include "Span.hpp"
 
-int main () {
-	int arr[] = {1, 2, 3, 4, 5};
-    std::vector<int> myVector(arr, arr + sizeof(arr) / sizeof(arr[0]));
-	std::cout << WHITE << "built a vector with values of 1 2 3 4 5" << RESET << std::endl;
-	std::cout << GRAY << "Searching for value 4 in the vector... " << RESET << std::endl;
-	easyfind(myVector, 4);
-	std::cout << GRAY << "Searching for value 6 in the vector... " << RESET << std::endl;
-	easyfind(myVector, 6);
+int main(void) {
+    try {
+	int	n = 10;
+	int	array[n];
+	Span	arma(n);
+
+	std::cout << "array:";
+    srand(time(NULL));
+	for (int i = 0; i < n; i++)
+	{
+		array[i] = rand() % n;
+		std::cout << " " << array[i];
+	}
+	std::cout << std::endl;
+
+	arma.addLotsOfNumbers(array, array + n);
+    std::cout << arma.shortestSpan() << std::endl;
+    std::cout << arma.longestSpan() << std::endl;
+    }
+    catch (std::exception &e) { std::cout << PURPLE << "exception caught" << RESET << std::endl; } 
+    return 1;
 }
