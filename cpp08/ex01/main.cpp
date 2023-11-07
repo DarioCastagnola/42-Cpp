@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:16:46 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/07 12:47:29 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/07 14:00:23 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,17 @@
 
 int main(void) {
     try {
-	int	n = 6;
+	int	n = 7;
 	int	array[n];
 	Span	arma(n);
 
-	std::cout << "array:";
+	std::cout << WHITE << "array:" << RESET;
     srand(time(NULL));
 	for (int i = 0; i < n; i++)
 	{
-		array[i] = rand() % 1500;
+		array[i] = rand() % 150;
 		std::cout << " " << array[i];
 	}
-	// array[1] = 2147483646;
-	// array[0] = -2147483647;
 	std::cout << std::endl;
 
 	arma.addLotsOfNumbers(array, array + n);
