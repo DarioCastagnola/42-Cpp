@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:23:17 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/06 16:25:13 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:50:48 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,32 @@ int Span::getValue(int idx) {
     return this->_myVector[idx];
 }
 
-int Span::shortestSpan() {
+long int Span::shortestSpan() {
     if (this->_size == 1  || !this->_size)
         throw NoSpaceLeft();
-    std::vector<int> tmp = this->_myVector;
-	int	diff = 2147483647;
-
-	for (std::vector<int>::iterator i = tmp.begin(); i != tmp.end() - 1; i++)
-		if (std::abs(*i - *(i + 1)) < diff)
-			diff = std::abs(*i - *(i + 1));
-	return (diff);
+    std::sort(this->_myVector.begin(), this->_myVector.begin() + this->_size);
+    // std::cout << "sorted array: ";
+    // for (unsigned int i = 0; i < this->_size; i++)
+	// 	std::cout << " " << this->_myVector[i];
+	// std::cout << std::endl;
+    long tmp =  5147483647;
+    for (unsigned int i = 0; i < this->_size - 1; i++)
+    {
+        long a = static_cast<long>(this->_myVector[i]);
+        long b = static_cast<long>(this->_myVector[i + 1]);
+        if (std::abs(a - b) < tmp)
+            tmp = std::abs(a - b);
+    }
+    return tmp;
 }
 
-int Span::longestSpan() {
+long int Span::longestSpan() {
     if (this->_size == 1  || !this->_size)
         throw NoSpaceLeft();
-    std::vector<int> tmp = this->_myVector;
-	int	diff = 2147483647;
-
-	for (std::vector<int>::iterator i = tmp.begin(); i != tmp.end() - 1; i++)
-		if (std::abs(*i - *(i + 1)) < diff)
-			diff = std::abs(*i - *(i + 1));
-	return (diff);
+    std::sort(this->_myVector.begin(), this->_myVector.begin() + this->_size);
+    long tmp =  5147483647;
+    long a = static_cast<long>(this->_myVector[0]);
+    long b = static_cast<long>(this->_myVector[this->_size - 1]);
+    tmp = std::abs(a - b);
+    return tmp;
 }

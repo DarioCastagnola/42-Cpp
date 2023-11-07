@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:42:38 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/06 16:10:05 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:26:04 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <cmath>
 #ifndef COLORS
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
@@ -36,8 +37,8 @@ class Span
         template <typename T>
         void    addLotsOfNumbers(T begin, T end);
         void    addNumber(int n);
-        int     shortestSpan();
-        int     longestSpan();
+        long int     shortestSpan();
+        long int     longestSpan();
         int     getValue(int idx);
         class NoSpaceLeft: public std::exception
         {
