@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:01:29 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/07 16:31:38 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:21:33 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#include <iostream>
 #include <list>
+#include <stack>
 #include <deque>
 #ifndef COLORS
 # define GREEN "\033[1;32m"
@@ -30,29 +30,22 @@
 # define RESET "\033[0m"
 #endif
 
-template <typename T, typename container_type = std::deque<T> >
-class MutantStack: public std::stack<T, container_type>
+
+template <typename T>
+class MutantStack: public std::stack<T>
 {
-    public:
-        MutantStack(void) {
-            return ;
-        };
-        MutantStack(const MutantStack<T, container_type> &obj): MutantStack<T, container_type>::stack(obj) {
-            *this = obj;
-        };
-        MutantStack &operator=(const MutantStack<T, container_type> &obj) {
-            if (this = &obj)
-                return *this;
-            this->c = obj.c;
-        };
-        ~MutantStack() {
-            return  ;
-        };
-        typedef typename container_type::iterator iterator;
-        iterator begin() {
-            return this->c.begin();
-        };
-        iterator end() {
-            return this->c.end();
-        };
+	public:
+		MutantStack(void): std::stack<T>() {};
+		MutantStack(MutantStack const &obj): std::stack<T>(obj) {};
+		~MutantStack(void) {};
+		MutantStack	&operator = (MutantStack const &obj)
+		{
+			if (this == &obj)
+				return (*this);
+			this->c = obj.c;
+			return (*this);
+		};
+		typedef typename std::stack<T>::container_type::iterator	iterator;
+		iterator	begin(void) { return this->c.begin(); }
+		iterator	end(void) { return this->c.end(); }
 };
