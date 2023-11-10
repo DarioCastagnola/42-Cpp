@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 16:09:58 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/10 11:06:02 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/10 13:46:35 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int main(int argc, char *argv[]) {
 		std::cerr << RED << "Error: could not open file." << RESET << std::endl;
 		return 0;
 	}
-	BitcoinExchange	dbase(argv[1]);
+	BitcoinExchange	scamcoin(argv[1], "data.csv");
 	return 1;
 }

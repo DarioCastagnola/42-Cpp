@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:23:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/10 11:59:01 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/10 16:21:10 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@
 class BitcoinExchange
 {
   public:
-	BitcoinExchange(char *file);
+	BitcoinExchange(std::string database);
 	BitcoinExchange(const BitcoinExchange &obj);
 	BitcoinExchange &operator=(const BitcoinExchange &obj);
 	~BitcoinExchange();
-	std::string _date;
-	float _value;
-	std::map<std::string, int> _myMap;
+	void exchange(char *file);
+	std::string _exdate;
+	std::map<std::string, double> _myMap;
 };
