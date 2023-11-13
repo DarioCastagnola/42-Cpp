@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 14:16:46 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/07 14:00:23 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:28:25 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int main(void) {
 		std::cout << " " << array[i];
 	}
 	std::cout << std::endl;
-
 	arma.addLotsOfNumbers(array, array + n);
+	arma.shortestSpan();
     std::cout << GREEN << "shortest span found is: " << RESET << arma.shortestSpan() << std::endl;
 	std::cout << GREEN << "longest span found is: " << RESET << arma.longestSpan() << std::endl;
     }

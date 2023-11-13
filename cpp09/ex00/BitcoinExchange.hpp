@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:23:04 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/10 16:21:10 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:37:18 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class BitcoinExchange
 	BitcoinExchange &operator=(const BitcoinExchange &obj);
 	~BitcoinExchange();
 	void exchange(char *file);
+	double getExchangeRate(std::string date);
 	std::string _exdate;
 	std::map<std::string, double> _myMap;
 };

@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 12:23:17 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/07 12:50:48 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/13 14:28:53 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int Span::getValue(int idx) {
 }
 
 long int Span::shortestSpan() {
-    if (this->_size == 1  || !this->_size)
+    if (this->_size == 1  || !this->_size || this->_myVector.empty())
         throw NoSpaceLeft();
     std::sort(this->_myVector.begin(), this->_myVector.begin() + this->_size);
     // std::cout << "sorted array: ";
@@ -62,7 +62,7 @@ long int Span::shortestSpan() {
 }
 
 long int Span::longestSpan() {
-    if (this->_size == 1  || !this->_size)
+    if (this->_size == 1  || !this->_size || this->_myVector.empty())
         throw NoSpaceLeft();
     std::sort(this->_myVector.begin(), this->_myVector.begin() + this->_size);
     long tmp =  5147483647;
