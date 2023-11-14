@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:23:01 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/13 16:45:16 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/14 16:39:59 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,36 @@ double BitcoinExchange::getExchangeRate(std::string date) {
 	}
 }
 
+int BitcoinExchange::isValidDateFormat(std::string date) {
+	if (date.size() != 10)
+		return 0;
+	return 1;
+}
+
+int BitcoinExchange::isValidDate(std::string date) {
+	int year;
+	int month;
+	int day;
+	if (!isValidDateFormat(date))
+		return 0;
+	year = atoi(date.substr(0,4).c_str());
+	if (year < 2009 || year > 2023)
+		return 0;
+	month = atoi(date.substr(5,7).c_str());
+	if (month < 1 || month > 12)
+		return 0;
+	day = atoi(date.substr(8,10).c_str());
+	if (month == 2)
+		if (day >= 28)
+			return 0;
+	if (month == 4 || month == 6 || month == 9 || month == 11)
+		if (day >= 30)
+			return 0;
+	if (day >= 31)
+		return 0;
+	return 1;
+}
+
 void    BitcoinExchange::exchange(char *file) {
     std::ifstream input;
 	std::string line;
@@ -81,8 +111,15 @@ void    BitcoinExchange::exchange(char *file) {
     while (getline(input, line))
     {
         date = line.substr(0, 10);
+		if (!isValidDate(date))
+			std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;
         line.erase(0, 13);
 		value = atof(line.c_str());
-		std::cout << date << " => " << value << " = " << value * getExchangeRate(date) << std::endl;
+		if (value < 0)
+			std::cerr << RED << "Error: not a positive number." << RESET << std::endl;
+		if (value >= 1000)
+			std::cerr << RED << "Error: too large a number." << RESET << std::endl;
+		if (isValidDate(date) && (value >= 0 && value <= 1000))
+			std::cout << date << " => " << value << " = " << value * getExchangeRate(date) << std::endl;
     }
 }
