@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:23:01 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/14 16:39:59 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/15 12:38:43 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,12 @@ double BitcoinExchange::getExchangeRate(std::string date) {
 	}
 }
 
+int BitcoinExchange::isValidLine(std::string line) {
+	if (line[11] != '|' || line[12] != ' ' || line[10] != ' ')
+		return 0;
+	return 1;
+}
+
 int BitcoinExchange::isValidDateFormat(std::string date) {
 	if (date.size() != 10)
 		return 0;
@@ -86,8 +92,7 @@ int BitcoinExchange::isValidDate(std::string date) {
 		return 0;
 	day = atoi(date.substr(8,10).c_str());
 	if (month == 2)
-		if (day >= 28)
-			return 0;
+		return ((((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && day <= 29) || day <= 28);
 	if (month == 4 || month == 6 || month == 9 || month == 11)
 		if (day >= 30)
 			return 0;
@@ -108,14 +113,24 @@ void    BitcoinExchange::exchange(char *file) {
         return ;
     }
 	getline(input, line);
+	if (line != "date | value")
+	{
+		std::cout << RED << "first line of file must be: date | value" << RESET << std::endl;
+		return ;
+	}
     while (getline(input, line))
     {
+		if (line.empty())
+			getline(input,line);
         date = line.substr(0, 10);
-		if (!isValidDate(date))
-			std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;
+		if (!isValidDate(date) || !isValidLine(line))
+		{
+			std::cerr << RED << "Error: bad input => " << date << RESET << std::endl;	
+			continue ;
+		}
         line.erase(0, 13);
 		value = atof(line.c_str());
-		if (value < 0)
+		if (value < 0 || !value)
 			std::cerr << RED << "Error: not a positive number." << RESET << std::endl;
 		if (value >= 1000)
 			std::cerr << RED << "Error: too large a number." << RESET << std::endl;
