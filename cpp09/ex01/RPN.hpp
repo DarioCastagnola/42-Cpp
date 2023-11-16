@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:35:18 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/15 14:53:38 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/16 15:35:11 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,13 @@
 class RPN
 {
   public:
-	BitcoinExchange(std::string database);
-	BitcoinExchange(const BitcoinExchange &obj);
-	BitcoinExchange &operator=(const BitcoinExchange &obj);
-	~BitcoinExchange();
-	std::map<std::string, double> _myMap;
+	RPN();
+	RPN(const RPN &obj);
+	RPN &operator=(const RPN &obj);
+	~RPN();
+	void reversePolishNotation(char *operation);
+	bool isValidOperation(std::string operation);
+	std::stack<int> _myStack;
+	int addend;
+	int addend2;
 };
