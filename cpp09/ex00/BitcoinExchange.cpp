@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 15:23:01 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/16 10:44:03 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/20 14:14:54 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &obj) {
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &obj) {
     if (this == &obj)
-        return *this;
+		return *this;
 	this->_myMap = obj._myMap;
     return *this;
 }
