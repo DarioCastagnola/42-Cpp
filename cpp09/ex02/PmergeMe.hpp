@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/23 11:48:03 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:04:46 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ class PmergeMe
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator=(const PmergeMe &obj);
 	~PmergeMe();
-	void pairing(std::vector<int>& arr);
+	void mergeInsertion(std::vector<int>& arr);
 	std::vector<int> _myVector;
 };

@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/23 14:00:03 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:04:28 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ PmergeMe::~PmergeMe() {
 	;
 }
 
-void PmergeMe::pairing(std::vector<int>& arr) {
+void PmergeMe::mergeInsertion(std::vector<int>& arr) {
 	int l = -1;
 	if (arr.size() % 2 != 0)
 	{
@@ -50,5 +50,3 @@ void PmergeMe::pairing(std::vector<int>& arr) {
 	if (l != -1)
 		arr.push_back(l);
 }
-
-		
