@@ -1,4 +1,4 @@
-NAME    = Serializer
+NAME    = PmergeMe
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++
