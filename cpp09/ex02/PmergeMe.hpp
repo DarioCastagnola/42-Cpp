@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/23 15:04:46 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/11/27 16:05:54 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@
 class PmergeMe
 {
   public:
-	PmergeMe(int argc, char **argv);
+	PmergeMe(int argc, char **argv, std::string container);
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator=(const PmergeMe &obj);
 	~PmergeMe();
-	void mergeInsertion(std::vector<int>& arr);
+	void execute();
+	void fordJohnson(std::vector<int>& arr, int pairsize);
 	std::vector<int> _myVector;
 };
