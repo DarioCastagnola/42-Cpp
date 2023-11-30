@@ -2,7 +2,7 @@ NAME    = PmergeMe
 SRC             = $(wildcard *.cpp)
 OBJ             = $(SRC:%.cpp=%.o)
 CC              = c++
-FLAGS   = -Wall -Wextra -Werror -std=c++98
+FLAGS   = -Wall -Wextra -Werror -std=c++14
 RM              = rm -f
 
 %.o:%.cpp
