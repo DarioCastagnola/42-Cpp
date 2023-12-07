@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/06 16:43:06 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:40:37 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 #include <stdlib.h>
 #ifndef COLORS
 # define GREEN "\033[1;32m"

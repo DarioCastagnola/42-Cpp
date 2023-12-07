@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/07 12:15:16 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:42:26 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
     std::vector<int> help;
     std::vector<int> heads;
 	size_t jac;
-    size_t temp;
     size_t lastidx;
     bool    check;
 
@@ -125,17 +124,6 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
     for (size_t i = 0; i < heads.size(); i++)
         std::cout << YELLOW << "-" << heads[i];
     std::cout << RESET << std::endl;
-    if (this->_myRest.size() >= pairsize / 2)
-    {
-        for (int i = 0; i < pairsize / 2; i++)
-        {
-            binaryInsert(heads, );
-            
-        }
-    }
-    for (size_t i = 0; i < heads.size(); i++)
-        std::cout << CYAN << "-" << heads[i];
-    std::cout << RESET << std::endl;
     if (pairsize == 1 || heads.size() == arr.size())
         return ;
     int pend;
@@ -145,6 +133,17 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
         for (size_t j = pend; j - pend < (size_t)pairsize / 2; j++)
             help.push_back(arr[j]);
     }
+    // if (this->_myRest.size() >= pairsize / 2)
+    // {
+    //     for (int i = 0; i < pairsize / 2; i++)
+    //     {
+    //         binaryInsert(heads, );
+            
+    //     }
+    // }
+    // for (size_t i = 0; i < heads.size(); i++)
+    //     std::cout << CYAN << "-" << heads[i];
+    // std::cout << RESET << std::endl;
     arr = help;
     fordJohnsonII(arr, pairsize / 2);
 }
@@ -156,7 +155,7 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
     {
         for (size_t i = arr.size(); arr.size() % pairsize != 0; i--)
         {
-            this->_myRest.push_back(arr[i - 1]); 
+            this->_myRest.push_back(arr[i - 1]);
             arr.pop_back();
         }
     }
@@ -185,6 +184,10 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 
 void PmergeMe::execute() {
 	fordJohnson(this->_myVector, 2);
+    std::reverse(this->_myRest.begin(),this->_myRest.end());
+    for (size_t i = 0; i < this->_myRest.size(); i++)
+        std::cout << this->_myRest[i] << " ";
+    std::cout << std::endl;
     fordJohnsonII(this->_myVector, this->_myVector.size());
     // for (size_t i = 0; this->_myVector.size() > i; i++)
     //     std::cout << this->_myVector[i] << " ";
