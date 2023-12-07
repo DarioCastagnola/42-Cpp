@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/06 16:51:16 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/07 12:15:16 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,38 +66,77 @@ void PmergeMe::binaryInsert(std::vector<int>& arr, int n, int start, int end) {
         arr.insert((arr.begin() + start), n);
     else if (start == end && arr[start] < n)
         arr.insert((arr.begin() + start + 1), n);
+    else
+        arr.insert((arr.begin() + start), n);
 }
 
 void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
-    std::cout << "pairsize = " << pairsize << std::endl;
     std::vector<int> help;
     std::vector<int> heads;
 	size_t jac;
+    size_t temp;
     size_t lastidx;
+    bool    check;
 
 	heads.push_back(arr[pairsize / 2]);
 	heads.push_back(arr[0]);
+    if ((size_t)pairsize == arr.size())
+    {
+        int pend;
+        for (size_t i = 0; i < heads.size(); i++)
+        {
+            pend = findIndex(arr, heads[i]);
+            for (size_t j = pend; j - pend < (size_t)pairsize / 2; j++)
+                help.push_back(arr[j]);
+        }
+        arr = help;
+        fordJohnsonII(arr, pairsize / 2);
+        return ;
+    }
     lastidx = 1;
+    check = true;
 	for (size_t i = 1; i < sizeof(jacobsthal) / sizeof(size_t); i++)
 	{
 		jac = jacobsthal[i];
-        std::cout << RED << "SUCA" << RESET << std::endl;
-        for (size_t j = lastidx + 1; j < jac; j++)
+        for (size_t j = lastidx + 1; j < jac + 1; j++)
+        {
+            if (j > arr.size() / pairsize)
+                break ;
             heads.push_back(arr[pairsize * (j - 1)]);
-        std::cout << CYAN << "SUCA" << RESET << std::endl;
+        }
+        for (size_t i = 0; i < heads.size(); i++)
+            std::cout << GREEN << "-" << heads[i];
+        std::cout << RESET << std::endl;
         while (jac > lastidx)
         {
             if (jac > arr.size() / pairsize)
             {
                 jac--;
+                check = false;
                 continue ;
             }
-	    	binaryInsert(heads, arr[pairsize * jac - pairsize / 2], arr[lastidx], arr[0]);
+	    	binaryInsert(heads, arr[pairsize * jac - pairsize / 2], 0, heads.size());
             jac--;
         }
+        if (!check)
+            break ;
         lastidx = jacobsthal[i];
 	}
-    if (pairsize == 1)
+    for (size_t i = 0; i < heads.size(); i++)
+        std::cout << YELLOW << "-" << heads[i];
+    std::cout << RESET << std::endl;
+    if (this->_myRest.size() >= pairsize / 2)
+    {
+        for (int i = 0; i < pairsize / 2; i++)
+        {
+            binaryInsert(heads, );
+            
+        }
+    }
+    for (size_t i = 0; i < heads.size(); i++)
+        std::cout << CYAN << "-" << heads[i];
+    std::cout << RESET << std::endl;
+    if (pairsize == 1 || heads.size() == arr.size())
         return ;
     int pend;
     for (size_t i = 0; i < heads.size(); i++)
@@ -129,6 +168,7 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 				std::swap(arr[i + j], arr[i + (pairsize / 2) + j]);
         }
     }
+    std::cout << "main chain: ";
 	for (size_t i = 0; arr.size() > i; i++)
         std::cout << arr[i] << " ";
     std::cout << std::endl;
@@ -146,5 +186,7 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 void PmergeMe::execute() {
 	fordJohnson(this->_myVector, 2);
     fordJohnsonII(this->_myVector, this->_myVector.size());
+    // for (size_t i = 0; this->_myVector.size() > i; i++)
+    //     std::cout << this->_myVector[i] << " ";
 }
 
