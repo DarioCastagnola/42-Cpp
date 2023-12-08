@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/07 12:40:37 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/08 11:44:48 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class PmergeMe
 	void fordJohnson(std::vector<int>& arr, int pairsize);
 	void fordJohnsonII(std::vector<int>& arr, int pairsize);
 	void binaryInsert(std::vector<int>& arr, int n, int start, int end);
-	size_t findIndex(std::vector<int>& arr, int n);
+	int findIndex(std::vector<int>& arr, int n);
 	std::vector<int> _myVector;
 	std::vector<int> _myRest;
 };
