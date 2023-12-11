@@ -6,16 +6,43 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/08 14:53:53 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:58:34 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+#include <algorithm>
+
+
+int isUnique(std::vector<int>& arr)
+{
+
+    std::vector<int> v = { 4, 7, 5, 2, 6, 9 };
+    for (int key = v[i]; i < v.size(); i++)
+    {
+        if (std::count(v.begin(), v.end(), key)) {
+            std::cout << "Element found";
+        }
+        else {
+            std::cout << "Element not found";
+        }
+    }
+}
+
 PmergeMe::PmergeMe(int argc, char **argv, std::string container) {
-    if (container == "vectors")
-		for (int i = 1; i < argc; i++)
-			this->_myVector.push_back(std::atoi(argv[i]));
+    for (int i = 1; i < argc; i++)
+    {
+        for (size_t j = 0; argv[i][j] != 0; j++)
+        {
+            if (!isdigit(argv[i][j]))
+                throw BadArguments();
+        }
+        if (container == "vectors")
+                this->_myVector.push_back(std::atoi(argv[i]));
+        else if (container == "deque")
+                this->_myDeque.push_back(std::atoi(argv[i]));
+    }
     return ;
 }
 
@@ -49,6 +76,36 @@ int PmergeMe::findIndex(std::vector<int>& arr, int n) {
     return -1;
 }
 
+int PmergeMe::findIndex(std::deque<int>& arr, int n) {
+    for (int i = 0; i < (int)arr.size(); i++)
+    {
+        if (arr[i] == n)
+            return i;
+    }
+    return -1;
+}
+
+void PmergeMe::binaryInsert(std::deque<int>& arr, int n, int start, int end) {
+    int mid;
+    while (start < end)
+    {
+        mid = (start + end) / 2;
+        
+        if (n > arr[mid])
+            start = mid + 1;
+        else
+            end = mid - 1;
+    }
+    if (arr[start] < n && arr[end] > n)
+        arr.insert((arr.begin() + start), n);
+    else if (start == end && arr[start] > n)
+        arr.insert((arr.begin() + start), n);
+    else if (start == end && arr[start] < n)
+        arr.insert((arr.begin() + start + 1), n);
+    else
+        arr.insert((arr.begin() + start), n);
+}
+
 void PmergeMe::binaryInsert(std::vector<int>& arr, int n, int start, int end) {
     int mid;
     while (start < end)
@@ -70,6 +127,99 @@ void PmergeMe::binaryInsert(std::vector<int>& arr, int n, int start, int end) {
         arr.insert((arr.begin() + start), n);
 }
 
+void PmergeMe::fordJohnsonII(std::deque<int>& arr, int pairsize) {
+    std::deque<int> help;
+    std::deque<int> heads;
+	size_t jac;
+    size_t lastidx;
+    bool    check;
+
+    // std::cout << "pairsize " << pairsize << std::endl; 
+    if (pairsize == 1 || heads.size() >= arr.size())
+    {
+        if (this->_myRestDeque.size() == 1)
+            binaryInsert(arr, this->_myRestDeque[0], 0, arr.size());
+        return ;
+    }
+	heads.push_back(arr[pairsize / 2]);
+	heads.push_back(arr[0]);
+    if ((size_t)pairsize == arr.size())
+    {
+        int pend;
+        for (size_t i = 0; i < heads.size(); i++)
+        {
+            pend = findIndex(arr, heads[i]);
+            for (size_t j = pend; j - pend < (size_t)pairsize / 2; j++)
+                help.push_back(arr[j]);
+        }
+        arr = help;
+        fordJohnsonII(arr, pairsize / 2);
+        return ;
+    }
+    lastidx = 1;
+    check = true;
+	for (size_t i = 1; i < sizeof(jacobsthal) / sizeof(size_t); i++)
+	{
+		jac = jacobsthal[i];
+        for (size_t j = lastidx + 1; j < jac + 1; j++)
+        {
+            if (j > arr.size() / pairsize)
+                break ;
+            heads.push_back(arr[pairsize * (j - 1)]);
+        }
+        while (jac > lastidx)
+        {
+            if (jac > arr.size() / pairsize)
+            {
+                jac--;
+                check = false;
+                continue ;
+            }
+	    	binaryInsert(heads, arr[pairsize * jac - pairsize / 2], 0, heads.size());
+            jac--;
+        }
+        if (!check)
+            break ;
+        lastidx = jacobsthal[i];
+	}
+    // for (size_t i = 0; i < heads.size(); i++)
+    //     std::cout << YELLOW << "-" << heads[i];
+    // std::cout << RESET << std::endl;
+    int pend;
+    if (this->_myRestDeque.size() >= (size_t)(pairsize))
+    {
+    //  std::cout << "ciao" << this->_myRest[0] << std::endl;
+        binaryInsert(heads, this->_myRestDeque[0], 0, heads.size() - 1);
+        if (pairsize > 1)
+            binaryInsert(heads, this->_myRestDeque[pairsize / 2], 0, heads.size() - 1);
+    }
+    // for (size_t i = 0; i < heads.size(); i++)
+    //     std::cout << GREEN << "-" << heads[i];
+    // std::cout << RESET << std::endl;
+    for (size_t i = 0; i < heads.size(); i++)
+    {
+        pend = findIndex(arr, heads[i]);
+        if (pend >= 0)
+            for (size_t j = pend; j - pend < (size_t)pairsize / 2; j++)
+                help.push_back(arr[j]);
+        else
+        {
+            pend = findIndex(this->_myRestDeque, heads[i]);
+            for (int i = pend; i < pend + pairsize / 2; i++)
+                help.push_back(this->_myRestDeque[i]);
+            this->_myRestDeque.erase(this->_myRestDeque.begin() + pend, this->_myRestDeque.begin() + pend + pairsize / 2);
+        }
+            // for (size_t i = 0; i < this->_myRest.size(); i++)
+            //     std::cout << RED << "-" << this->_myRest[i];
+            // std::cout << RESET << std::endl;
+    // for (size_t i = 0; i < help.size(); i++)
+    //     std::cout << CYAN << "-" << help[i];
+    // std::cout << RESET << std::endl;
+    }
+    arr = help;
+    fordJohnsonII(arr, pairsize / 2);
+}
+
 void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
     std::vector<int> help;
     std::vector<int> heads;
@@ -77,7 +227,7 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
     size_t lastidx;
     bool    check;
 
-    std::cout << "pairsize " << pairsize << std::endl; 
+    // std::cout << "pairsize " << pairsize << std::endl; 
     if (pairsize == 1 || heads.size() >= arr.size())
     {
         if (this->_myRest.size() == 1)
@@ -136,9 +286,9 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
         if (pairsize > 1)
             binaryInsert(heads, this->_myRest[pairsize / 2], 0, heads.size() - 1);
     }
-    for (size_t i = 0; i < heads.size(); i++)
-        std::cout << GREEN << "-" << heads[i];
-    std::cout << RESET << std::endl;
+    // for (size_t i = 0; i < heads.size(); i++)
+    //     std::cout << GREEN << "-" << heads[i];
+    // std::cout << RESET << std::endl;
     for (size_t i = 0; i < heads.size(); i++)
     {
         pend = findIndex(arr, heads[i]);
@@ -155,12 +305,46 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
             // for (size_t i = 0; i < this->_myRest.size(); i++)
             //     std::cout << RED << "-" << this->_myRest[i];
             // std::cout << RESET << std::endl;
-    for (size_t i = 0; i < help.size(); i++)
-        std::cout << CYAN << "-" << help[i];
-    std::cout << RESET << std::endl;
+    // for (size_t i = 0; i < help.size(); i++)
+    //     std::cout << CYAN << "-" << help[i];
+    // std::cout << RESET << std::endl;
     }
     arr = help;
     fordJohnsonII(arr, pairsize / 2);
+}
+
+void PmergeMe::fordJohnson(std::deque<int>& arr, int pairsize) {
+	static int recursion = 0;
+	std::cout << "recursion " << recursion++ << std::endl;
+    if (arr.size() % pairsize != 0)
+    {
+        for (size_t i = arr.size(); arr.size() % pairsize != 0; i--)
+        {
+            this->_myRest.push_back(arr[i - 1]);
+            arr.pop_back();
+        }
+    }
+    for (size_t i = 0; i < arr.size(); i += pairsize)
+    {
+        if (arr[i] < arr[i + pairsize / 2]) {
+            std::swap(arr[i], arr[i + pairsize / 2]);
+			for (int j = 1; j < pairsize / 2; j++)
+				std::swap(arr[i + j], arr[i + (pairsize / 2) + j]);
+        }
+    }
+    std::cout << "main chain: ";
+	for (size_t i = 0; arr.size() > i; i++)
+        std::cout << arr[i] << " ";
+    std::cout << std::endl;
+    std::cout << "rest: ";
+    for (size_t i = 0; this->_myRest.size() > i; i++)
+    {
+        std::cout << this->_myRest[i] << " ";
+    }
+    std::cout << std::endl;
+    std::cout << "------------------------------------------------" << std::endl;
+	if (arr.size() / pairsize != 1)
+		fordJohnson(arr, pairsize * 2);
 }
 
 void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
@@ -197,13 +381,23 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 		fordJohnson(arr, pairsize * 2);
 }
 
-void PmergeMe::execute() {
-	fordJohnson(this->_myVector, 2);
-    std::reverse(this->_myRest.begin(),this->_myRest.end());
-    fordJohnsonII(this->_myVector, this->_myVector.size());
-    for (size_t i = 0; this->_myVector.size() > i; i++)
-        std::cout << "-" << this->_myVector[i];
-    std::cout << std::endl;
+void PmergeMe::execute(std::string container) {
+    if (container == "vectors")
+    {
+        fordJohnson(this->_myVector, 2);
+        std::reverse(this->_myRest.begin(),this->_myRest.end());
+        fordJohnsonII(this->_myVector, this->_myVector.size());
+        for (size_t i = 0; this->_myVector.size() > i; i++)
+            std::cout << "-" << this->_myVector[i];
+        std::cout << std::endl;
+    }
+    else if (container == "deque")
+    {
+        fordJohnson(this->_myDeque, 2);
+        std::reverse(this->_myRestDeque.begin(),this->_myRestDeque.end());
+        fordJohnsonII(this->_myDeque, this->_myDeque.size());
+        for (size_t i = 0; this->_myDeque.size() > i; i++)
+            std::cout << "-" << this->_myDeque[i];
+        std::cout << std::endl; 
+    }
 }
-
-        

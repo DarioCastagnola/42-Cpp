@@ -6,16 +6,17 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/08 11:44:48 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:25:28 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <vector>
-#include <list>
+#include <deque>
 #include <algorithm>
 #include <stdlib.h>
+#include <sys/time.h>
 #ifndef COLORS
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
@@ -35,11 +36,24 @@ class PmergeMe
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator=(const PmergeMe &obj);
 	~PmergeMe();
-	void execute();
+	void execute(std::string container);
 	void fordJohnson(std::vector<int>& arr, int pairsize);
 	void fordJohnsonII(std::vector<int>& arr, int pairsize);
 	void binaryInsert(std::vector<int>& arr, int n, int start, int end);
 	int findIndex(std::vector<int>& arr, int n);
+	void fordJohnson(std::deque<int>& arr, int pairsize);
+	void fordJohnsonII(std::deque<int>& arr, int pairsize);
+	void binaryInsert(std::deque<int>& arr, int n, int start, int end);
+	int findIndex(std::deque<int>& arr, int n);
+	class BadArguments: public std::exception
+    {
+      virtual const char* what() const throw()
+		{
+		return "BadArguments";
+		}
+	};
+	std::deque<int> _myDeque;
+	std::deque<int> _myRestDeque;
 	std::vector<int> _myVector;
 	std::vector<int> _myRest;
 };

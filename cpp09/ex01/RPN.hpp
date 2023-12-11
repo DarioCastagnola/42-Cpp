@@ -6,13 +6,14 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 14:35:18 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/16 15:35:11 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:11:11 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <stack>
+#include <list>
 #ifndef COLORS
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
@@ -34,7 +35,7 @@ class RPN
 	~RPN();
 	void reversePolishNotation(char *operation);
 	bool isValidOperation(std::string operation);
-	std::stack<int> _myStack;
+	std::stack<int, std::list<int> > _myStack;
 	int addend;
 	int addend2;
 };
