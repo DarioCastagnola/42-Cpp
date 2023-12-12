@@ -6,15 +6,13 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/12 11:56:49 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:01:01 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <algorithm>
 
-
-bool hasDuplicates(const std::vector<int>& numbers) {
+bool PmergeMe::hasDuplicates(const std::vector<int>& numbers) {
     // Use nested loops to compare each pair of elements
     for (std::vector<int>::size_type i = 0; i < numbers.size(); ++i) {
         for (std::vector<int>::size_type j = i + 1; j < numbers.size(); ++j) {
@@ -26,7 +24,7 @@ bool hasDuplicates(const std::vector<int>& numbers) {
     return false;
 }
 
-bool hasDuplicates(const std::deque<int>& numbers) {
+bool PmergeMe::hasDuplicates(const std::deque<int>& numbers) {
     for (std::vector<int>::size_type i = 0; i < numbers.size(); ++i) {
         for (std::vector<int>::size_type j = i + 1; j < numbers.size(); ++j) {
             if (numbers[i] == numbers[j]) {

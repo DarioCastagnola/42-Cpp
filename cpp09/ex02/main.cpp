@@ -6,13 +6,11 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:58:24 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/12 11:57:31 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:01:27 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <ctime>
-#include <iomanip> 
 
 int main(int argc, char* argv[]) {
     if (argc < 2)

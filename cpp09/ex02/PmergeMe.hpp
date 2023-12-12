@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:49 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/12 10:58:17 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/12 12:01:46 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 #include <deque>
 #include <algorithm>
 #include <stdlib.h>
-#include <sys/time.h>
+#include <ctime>
+#include <iomanip> 
 #ifndef COLORS
 # define GREEN "\033[1;32m"
 # define RED "\033[1;31m"
@@ -36,6 +37,8 @@ class PmergeMe
 	PmergeMe(const PmergeMe &obj);
 	PmergeMe &operator=(const PmergeMe &obj);
 	~PmergeMe();
+	bool hasDuplicates(const std::deque<int>& numbers);
+	bool hasDuplicates(const std::vector<int>& numbers);
 	void execute(std::string container);
 	void fordJohnson(std::vector<int>& arr, int pairsize);
 	void fordJohnsonII(std::vector<int>& arr, int pairsize);
