@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/12 11:20:15 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:56:49 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,7 +307,7 @@ void PmergeMe::fordJohnson(std::deque<int>& arr, int pairsize) {
     {
         for (size_t i = arr.size(); arr.size() % pairsize != 0; i--)
         {
-            this->_myRest.push_back(arr[i - 1]);
+            this->_myRestDeque.push_back(arr[i - 1]);
             arr.pop_back();
         }
     }
@@ -371,20 +371,46 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 void PmergeMe::execute(std::string container) {
     if (container == "vectors")
     {
+        std::cout << RED << "unsorted vector = ";
+        for (size_t i = 0; this->_myVector.size() > i; i++)
+        {
+            std::cout << this->_myVector[i];
+            if (i + 1 < this->_myVector.size())
+                std::cout << "-";
+        }
+        std::cout << RESET << std::endl;
         fordJohnson(this->_myVector, 2);
         std::reverse(this->_myRest.begin(),this->_myRest.end());
         fordJohnsonII(this->_myVector, this->_myVector.size());
+        std::cout << GREEN << "sorted vector = ";
         for (size_t i = 0; this->_myVector.size() > i; i++)
-            std::cout << "-" << this->_myVector[i];
-        std::cout << std::endl;
+        {
+            std::cout << this->_myVector[i];
+            if (i + 1 < this->_myVector.size())
+                std::cout << "-";
+        }
+        std::cout << RESET << std::endl;
     }
     else if (container == "deque")
     {
+        std::cout << RED << "unsorted deque = ";
+        for (size_t i = 0; this->_myDeque.size() > i; i++)
+        {
+            std::cout << this->_myDeque[i];
+            if (i + 1 < this->_myDeque.size())
+                std::cout << "-";
+        }
+        std::cout << RESET << std::endl;
         fordJohnson(this->_myDeque, 2);
         std::reverse(this->_myRestDeque.begin(),this->_myRestDeque.end());
         fordJohnsonII(this->_myDeque, this->_myDeque.size());
+        std::cout << GREEN << "sorted deque = ";
         for (size_t i = 0; this->_myDeque.size() > i; i++)
-            std::cout << "-" << this->_myDeque[i];
-        std::cout << std::endl; 
+        {
+            std::cout << this->_myDeque[i];
+            if (i + 1 < this->_myDeque.size())
+                std::cout << "-";
+        }
+        std::cout << RESET << std::endl; 
     }
 }
