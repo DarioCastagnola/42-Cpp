@@ -6,28 +6,35 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/22 15:19:39 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/12/11 15:58:34 by dcastagn         ###   ########.fr       */
+/*   Updated: 2023/12/12 11:18:51 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-
 #include <algorithm>
 
 
-int isUnique(std::vector<int>& arr)
-{
-
-    std::vector<int> v = { 4, 7, 5, 2, 6, 9 };
-    for (int key = v[i]; i < v.size(); i++)
-    {
-        if (std::count(v.begin(), v.end(), key)) {
-            std::cout << "Element found";
-        }
-        else {
-            std::cout << "Element not found";
+bool hasDuplicates(const std::vector<int>& numbers) {
+    // Use nested loops to compare each pair of elements
+    for (std::vector<int>::size_type i = 0; i < numbers.size(); ++i) {
+        for (std::vector<int>::size_type j = i + 1; j < numbers.size(); ++j) {
+            if (numbers[i] == numbers[j]) {
+                return true;  // Duplicate found
+            }
         }
     }
+    return false;
+}
+
+bool hasDuplicates(const std::deque<int>& numbers) {
+    for (std::vector<int>::size_type i = 0; i < numbers.size(); ++i) {
+        for (std::vector<int>::size_type j = i + 1; j < numbers.size(); ++j) {
+            if (numbers[i] == numbers[j]) {
+                return true;  // Duplicate found
+            }
+        }
+    }
+    return false;
 }
 
 PmergeMe::PmergeMe(int argc, char **argv, std::string container) {
@@ -39,9 +46,17 @@ PmergeMe::PmergeMe(int argc, char **argv, std::string container) {
                 throw BadArguments();
         }
         if (container == "vectors")
-                this->_myVector.push_back(std::atoi(argv[i]));
+        {
+            this->_myVector.push_back(std::atoi(argv[i]));
+            if (hasDuplicates(this->_myVector))
+                throw BadArguments();
+        }
         else if (container == "deque")
-                this->_myDeque.push_back(std::atoi(argv[i]));
+        {
+            this->_myDeque.push_back(std::atoi(argv[i]));
+            if (hasDuplicates(this->_myDeque))
+                throw BadArguments();
+        }
     }
     return ;
 }
@@ -134,7 +149,6 @@ void PmergeMe::fordJohnsonII(std::deque<int>& arr, int pairsize) {
     size_t lastidx;
     bool    check;
 
-    // std::cout << "pairsize " << pairsize << std::endl; 
     if (pairsize == 1 || heads.size() >= arr.size())
     {
         if (this->_myRestDeque.size() == 1)
@@ -182,20 +196,13 @@ void PmergeMe::fordJohnsonII(std::deque<int>& arr, int pairsize) {
             break ;
         lastidx = jacobsthal[i];
 	}
-    // for (size_t i = 0; i < heads.size(); i++)
-    //     std::cout << YELLOW << "-" << heads[i];
-    // std::cout << RESET << std::endl;
     int pend;
     if (this->_myRestDeque.size() >= (size_t)(pairsize))
     {
-    //  std::cout << "ciao" << this->_myRest[0] << std::endl;
         binaryInsert(heads, this->_myRestDeque[0], 0, heads.size() - 1);
         if (pairsize > 1)
             binaryInsert(heads, this->_myRestDeque[pairsize / 2], 0, heads.size() - 1);
     }
-    // for (size_t i = 0; i < heads.size(); i++)
-    //     std::cout << GREEN << "-" << heads[i];
-    // std::cout << RESET << std::endl;
     for (size_t i = 0; i < heads.size(); i++)
     {
         pend = findIndex(arr, heads[i]);
@@ -209,12 +216,6 @@ void PmergeMe::fordJohnsonII(std::deque<int>& arr, int pairsize) {
                 help.push_back(this->_myRestDeque[i]);
             this->_myRestDeque.erase(this->_myRestDeque.begin() + pend, this->_myRestDeque.begin() + pend + pairsize / 2);
         }
-            // for (size_t i = 0; i < this->_myRest.size(); i++)
-            //     std::cout << RED << "-" << this->_myRest[i];
-            // std::cout << RESET << std::endl;
-    // for (size_t i = 0; i < help.size(); i++)
-    //     std::cout << CYAN << "-" << help[i];
-    // std::cout << RESET << std::endl;
     }
     arr = help;
     fordJohnsonII(arr, pairsize / 2);
@@ -227,7 +228,6 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
     size_t lastidx;
     bool    check;
 
-    // std::cout << "pairsize " << pairsize << std::endl; 
     if (pairsize == 1 || heads.size() >= arr.size())
     {
         if (this->_myRest.size() == 1)
@@ -275,20 +275,13 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
             break ;
         lastidx = jacobsthal[i];
 	}
-    // for (size_t i = 0; i < heads.size(); i++)
-    //     std::cout << YELLOW << "-" << heads[i];
-    // std::cout << RESET << std::endl;
     int pend;
     if (this->_myRest.size() >= (size_t)(pairsize))
     {
-    //  std::cout << "ciao" << this->_myRest[0] << std::endl;
         binaryInsert(heads, this->_myRest[0], 0, heads.size() - 1);
         if (pairsize > 1)
             binaryInsert(heads, this->_myRest[pairsize / 2], 0, heads.size() - 1);
     }
-    // for (size_t i = 0; i < heads.size(); i++)
-    //     std::cout << GREEN << "-" << heads[i];
-    // std::cout << RESET << std::endl;
     for (size_t i = 0; i < heads.size(); i++)
     {
         pend = findIndex(arr, heads[i]);
@@ -302,20 +295,14 @@ void PmergeMe::fordJohnsonII(std::vector<int>& arr, int pairsize) {
                 help.push_back(this->_myRest[i]);
             this->_myRest.erase(this->_myRest.begin() + pend, this->_myRest.begin() + pend + pairsize / 2);
         }
-            // for (size_t i = 0; i < this->_myRest.size(); i++)
-            //     std::cout << RED << "-" << this->_myRest[i];
-            // std::cout << RESET << std::endl;
-    // for (size_t i = 0; i < help.size(); i++)
-    //     std::cout << CYAN << "-" << help[i];
-    // std::cout << RESET << std::endl;
     }
     arr = help;
     fordJohnsonII(arr, pairsize / 2);
 }
 
 void PmergeMe::fordJohnson(std::deque<int>& arr, int pairsize) {
-	static int recursion = 0;
-	std::cout << "recursion " << recursion++ << std::endl;
+	// static int recursion = 0;
+	// std::cout << "recursion " << recursion++ << std::endl;
     if (arr.size() % pairsize != 0)
     {
         for (size_t i = arr.size(); arr.size() % pairsize != 0; i--)
@@ -332,24 +319,24 @@ void PmergeMe::fordJohnson(std::deque<int>& arr, int pairsize) {
 				std::swap(arr[i + j], arr[i + (pairsize / 2) + j]);
         }
     }
-    std::cout << "main chain: ";
-	for (size_t i = 0; arr.size() > i; i++)
-        std::cout << arr[i] << " ";
-    std::cout << std::endl;
-    std::cout << "rest: ";
-    for (size_t i = 0; this->_myRest.size() > i; i++)
-    {
-        std::cout << this->_myRest[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << "------------------------------------------------" << std::endl;
+    // std::cout << "main chain: ";
+	// for (size_t i = 0; arr.size() > i; i++)
+    //     std::cout << arr[i] << " ";
+    // std::cout << std::endl;
+    // std::cout << "rest: ";
+    // for (size_t i = 0; this->_myRest.size() > i; i++)
+    // {
+    //     std::cout << this->_myRest[i] << " ";
+    // }
+    // std::cout << std::endl;
+    // std::cout << "------------------------------------------------" << std::endl;
 	if (arr.size() / pairsize != 1)
 		fordJohnson(arr, pairsize * 2);
 }
 
 void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
-	static int recursion = 0;
-	std::cout << "recursion " << recursion++ << std::endl;
+	// static int recursion = 0;
+	// std::cout << "recursion " << recursion++ << std::endl;
     if (arr.size() % pairsize != 0)
     {
         for (size_t i = arr.size(); arr.size() % pairsize != 0; i--)
@@ -366,17 +353,17 @@ void PmergeMe::fordJohnson(std::vector<int>& arr, int pairsize) {
 				std::swap(arr[i + j], arr[i + (pairsize / 2) + j]);
         }
     }
-    std::cout << "main chain: ";
-	for (size_t i = 0; arr.size() > i; i++)
-        std::cout << arr[i] << " ";
-    std::cout << std::endl;
-    std::cout << "rest: ";
-    for (size_t i = 0; this->_myRest.size() > i; i++)
-    {
-        std::cout << this->_myRest[i] << " ";
-    }
-    std::cout << std::endl;
-    std::cout << "------------------------------------------------" << std::endl;
+    // std::cout << "main chain: ";
+	// for (size_t i = 0; arr.size() > i; i++)
+    //     std::cout << arr[i] << " ";
+    // std::cout << std::endl;
+    // std::cout << "rest: ";
+    // for (size_t i = 0; this->_myRest.size() > i; i++)
+    // {
+    //     std::cout << this->_myRest[i] << " ";
+    // }
+    // std::cout << std::endl;
+    // std::cout << "------------------------------------------------" << std::endl;
 	if (arr.size() / pairsize != 1)
 		fordJohnson(arr, pairsize * 2);
 }
