@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/17 11:45:28 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/10/09 11:30:27 by dcastagn         ###   ########.fr       */
+/*   Updated: 2024/05/06 11:39:42 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 
 std::string printSearch(std::string str)
 {
+    for (size_t i = 0; i < str.size(); ) {
+        if (str[i] == '\t')
+            str.erase(i, 1);
+        else
+            ++i;
+    }
     if (str.length() > 10)
     {
         str.resize(10);
