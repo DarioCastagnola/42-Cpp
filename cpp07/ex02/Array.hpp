@@ -6,7 +6,7 @@
 /*   By: dcastagn <dcastagn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 11:44:07 by dcastagn          #+#    #+#             */
-/*   Updated: 2023/11/02 11:00:15 by dcastagn         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:29:21 by dcastagn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class Array {
 };
 
 template <typename T>
-Array<T>::Array(void): _size(0), _array(new T[0]) {
+Array<T>::Array(void): _size(0), _array(new T[0]()) {
 	std::cout << GREEN << "Empty Array constructed" << RESET << std::endl;
 	return ;
 }
@@ -54,7 +54,7 @@ Array<T>::Array(void): _size(0), _array(new T[0]) {
 template <typename T>
 Array<T>::Array(unsigned int n): _size(n) {
 	std::cout << GREEN << "Array constructed" << RESET << std::endl;
-	this->_array = new T[n];
+	this->_array = new T[n]();
 	return ;
 }
 
@@ -72,7 +72,7 @@ Array<T> &Array<T>::operator=(const Array<T> &obj) {
 	delete [] this->_array;
 	if (this->_size)
 	{
-		this->_array = new T[this->_size];
+		this->_array = new T[this->_size]();
 		for (int i = 0; i < this->_size; i++)
 		{
 			this->_array[i] = obj._array[i];			
